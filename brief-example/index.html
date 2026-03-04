@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="/css/styles.css"><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Outreach Intelligence Brief — Mnomis</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:           #0f2341;
+  --navy-mid:       #1a3459;
+  --green:          #3d7a36;
+  --green-lt:       #5a9e52;
+  --amber:          #b45309;
+  --amber-bg:       #fef9f0;
+  --amber-border:   #e8c97a;
+  --slate:          #3d4f63;
+  --fog:            #f2f4f7;
+  --fog-dark:       #e6eaef;
+  --white:          #ffffff;
+  --text:           #1e2d3d;
+  --muted:          #5a6a7a;
+  --rule:           #d0d8e4;
+  --serif:  "Libre Baskerville", Georgia, serif;
+  --sans:   "DM Sans", system-ui, sans-serif;
+  --mono:   "DM Mono", monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--fog);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+/* PAGE */
+.page {
+  max-width: 1080px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+}
+.breadcrumb a { color: var(--muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--navy); }
+
+/* BRIEF DOCUMENT */
+.brief {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--navy);
+}
+
+/* BRIEF HEADER */
+.brief-header {
+  padding: 2rem 2.5rem 1.75rem;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+}
+.brief-doc-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.brief-title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+}
+.brief-subtitle { font-size: 0.85rem; color: var(--muted); }
+.brief-meta {
+  text-align: right;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.85;
+  font-family: var(--mono);
+  flex-shrink: 0;
+}
+.brief-meta strong { color: var(--text); font-weight: 500; }
+
+/* POSTURE BANNER */
+.posture-banner {
+  background: var(--amber-bg);
+  border-bottom: 1px solid var(--amber-border);
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+.posture-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--amber);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  margin-bottom: 0.35rem;
+}
+.posture-tag .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.65);
+}
+.posture-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--amber);
+  margin-bottom: 0.25rem;
+}
+.posture-def {
+  font-size: 0.85rem;
+  color: var(--slate);
+  line-height: 1.6;
+  border-left: 2px solid var(--amber-border);
+  padding-left: 1rem;
+  flex: 1;
+}
+.confidence-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+.conf-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.conf-bar {
+  height: 5px;
+  background: var(--fog-dark);
+  border-radius: 3px;
+  width: 120px;
+  overflow: hidden;
+}
+.conf-bar-fill {
+  height: 100%;
+  background: var(--amber);
+  border-radius: 3px;
+  width: 74%;
+}
+.conf-pct {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--amber);
+}
+
+/* AT A GLANCE */
+.glance-strip {
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 1rem 2.5rem;
+}
+.glance-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.75rem;
+}
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 0.75rem;
+}
+.glance-cell {
+  background: rgba(255,255,255,0.04);
+  padding: 0.6rem 0.85rem;
+}
+.glance-cell-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.25rem;
+}
+.glance-cell-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+.glance-cell-value.amber { color: #fbbf24; }
+.glance-cell-value.down { color: #f87171; }
+.glance-next {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+}
+.glance-next strong { color: #fff; font-weight: 500; }
+
+/* BRIEF BODY LAYOUT */
+.brief-body {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+}
+
+/* MAIN COLUMN */
+.brief-main {
+  border-right: 1px solid var(--rule);
+}
+.brief-section {
+  padding: 1.75rem 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.brief-section:last-child { border-bottom: none; }
+.section-heading {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--fog-dark);
+}
+
+/* SIGNAL GRID */
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.signal-cell {
+  background: var(--white);
+  padding: 0.85rem;
+}
+.signal-name {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+.signal-value {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.signal-value.amber { color: var(--amber); }
+.signal-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* INTERPRETATION PARAS */
+.interp-para {
+  font-size: 0.9rem;
+  color: var(--slate);
+  line-height: 1.8;
+  margin-bottom: 0.85rem;
+}
+.interp-para:last-child { margin-bottom: 0; }
+.interp-para strong { color: var(--text); font-weight: 600; }
+
+/* GUIDANCE CARDS */
+.guidance-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 1rem;
+}
+.guidance-card {
+  background: var(--white);
+  padding: 1rem;
+}
+.guidance-card-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.guidance-card h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+  font-family: var(--sans);
+}
+.guidance-card p {
+  font-size: 0.83rem;
+  color: var(--slate);
+  line-height: 1.6;
+}
+.guidance-card p strong { color: var(--text); font-weight: 500; }
+
+/* TONE SPECTRUM */
+.tone-spectrum {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0.6rem 0;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tone-seg { flex: 1; height: 100%; }
+.tone-seg.seg1 { background: #93c5fd; }
+.tone-seg.seg2 { background: #60a5fa; }
+.tone-seg.seg3 { background: var(--amber); }
+.tone-seg.seg4 { background: #d97706; }
+.tone-seg.seg5 { background: #92400e; }
+.tone-marker {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.2rem;
+}
+
+/* STEPS & AVOID */
+.steps-list, .avoid-list { list-style: none; }
+.steps-list li, .avoid-list li {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  color: var(--slate);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--fog-dark);
+  line-height: 1.5;
+}
+.steps-list li:last-child, .avoid-list li:last-child { border-bottom: none; }
+.step-num {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.avoid-x {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  border-radius: 2px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.steps-list li strong, .avoid-list li strong { color: var(--text); font-weight: 600; }
+
+/* SIDEBAR */
+.brief-sidebar {
+  padding: 0;
+}
+.sidebar-section {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.sidebar-section:last-child { border-bottom: none; }
+.sidebar-heading {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--fog-dark);
+}
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--fog-dark);
+  gap: 0.5rem;
+}
+.meta-row:last-child { border-bottom: none; }
+.meta-key {
+  color: var(--muted);
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.meta-val {
+  color: var(--text);
+  font-weight: 500;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+/* CLASSIFICATION HISTORY */
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--fog-dark);
+}
+.history-item:last-child { border-bottom: none; }
+.history-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.history-period { color: var(--muted); font-family: var(--mono); font-size: 10px; flex-shrink: 0; }
+.history-posture { color: var(--text); font-weight: 500; }
+.history-conf { color: var(--muted); font-size: 10px; margin-left: auto; font-family: var(--mono); }
+
+/* SPECTRUM */
+.posture-spectrum {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.spectrum-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 2px;
+  font-size: 0.78rem;
+}
+.spectrum-item.current {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+}
+.spectrum-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.spectrum-item-name { font-weight: 500; color: var(--text); }
+.spectrum-item.current .spectrum-item-name { color: var(--amber); font-weight: 600; }
+.spectrum-item-arrow { margin-left: auto; color: var(--amber); font-size: 11px; font-weight: 700; }
+
+/* ESCALATION BOX */
+.escalation-box {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-left: 3px solid #ea580c;
+  padding: 0.85rem 1rem;
+  border-radius: 1px;
+}
+.escalation-box-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ea580c;
+  margin-bottom: 0.35rem;
+}
+.escalation-box p { font-size: 0.8rem; color: var(--slate); line-height: 1.55; }
+.escalation-box p strong { color: var(--text); font-weight: 500; }
+
+/* BRIEF FOOTER */
+.brief-footer {
+  background: var(--fog);
+  border-top: 1px solid var(--rule);
+  padding: 0.85rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ILLUSTRATIVE NOTICE */
+.illustrative-notice {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1.25rem;
+  border: 1px dashed var(--rule);
+  margin-top: 1.5rem;
+}
+
+@media print {
+  header, nav, .breadcrumb, .page-actions, .illustrative-notice { display: none; }
+  body { background: #fff; }
+  .page { margin: 0; padding: 0; max-width: 100%; }
+  .brief { border: none; }
+}
+@media (max-width: 700px) {
+  .brief-body { grid-template-columns: 1fr; }
+  .brief-main { border-right: none; }
+  .signal-grid { grid-template-columns: 1fr 1fr; }
+  .guidance-grid { grid-template-columns: 1fr; }
+  .brief-header { grid-template-columns: 1fr; }
+  .brief-meta { text-align: left; }
+  .posture-banner { flex-direction: column; gap: 1rem; }
+  .glance-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<!-- BUILD: v4-header -->
+<!-- BUILD: fullfix-v6 -->
+<header class="site-header" data-build="fullfix-v6">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <img src="/assets/mnomis-logo.png" alt="Mnomis">
+    </a>
+    <nav class="main-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/framework/" class="nav-link">Framework</a>
+      <a href="/brief-example/" class="nav-link">Sample Brief</a>
+      <a href="/pilot/" class="nav-link">Pilot</a>
+      <a href="/about/" class="nav-link">Why Mnomis</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
+<div class="breadcrumb">
+<a href="/">Mnomis</a>
+<span>›</span>
+<span>Outreach Intelligence Brief — Example</span>
+</div>
+<div class="vision-banner" style="background:var(--navy,#0f2341);border-left:4px solid var(--green,#5a9e52);padding:1.25rem 1.5rem;margin-bottom:1.5rem;border-radius:2px;">
+  <p style="font-family:var(--mono,monospace);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-lt,#8ec986);margin:0 0 0.5rem;">As we scale with you</p>
+  <p style="font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65;margin:0 0 0.5rem;">The Outreach Intelligence Brief is the current delivery format — readable, workflow-ready, and requiring no new tools. As Mnomis scales, this guidance will be delivered directly within the EHR and care management platforms your teams already use.</p>
+  <p style="font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65;margin:0;font-weight:500;">The goal is not adoption of a new system. It is better intelligence inside the systems you already have.</p>
+</div>
+<div class="brief">
+<!-- BRIEF HEADER -->
+<div class="brief-header">
+<div>
+<div class="brief-doc-label">Outreach Intelligence Brief</div>
+<div class="brief-title">Member 4471-C</div>
+<div class="brief-subtitle">Care Management Engagement Guidance  ·  Motivational Posture Classification</div>
+</div>
+<div class="brief-meta">
+<div><span class="meta-key">Generated</span><br/><strong>14 Feb 2026</strong></div>
+<div style="margin-top:0.5rem"><span class="meta-key">Valid through</span><br/><strong>15 May 2026</strong></div>
+<div style="margin-top:0.5rem"><span class="meta-key">Program</span><br/><strong>Care Management</strong></div>
+</div>
+</div>
+<!-- POSTURE BANNER -->
+<div class="posture-banner">
+<div>
+<div class="posture-tag"><span class="dot"></span> Motivational Posture 03</div>
+<div class="posture-name">Conditional Actor</div>
+<div class="confidence-row">
+<span class="conf-label">Classification confidence</span>
+<div class="conf-bar"><div class="conf-bar-fill"></div></div>
+<span class="conf-pct">74%</span>
+</div>
+</div>
+<div class="posture-def">
+        Engages when conditions are clearly defined and the ask is specific and bounded.
+        Responds to concrete requests with visible benefit attached. Disengages when outreach
+        is open-ended, multi-step, or does not connect to an immediate concern.
+      </div>
+</div>
+<!-- AT A GLANCE -->
+<div class="glance-strip">
+<div class="glance-label">At a glance — 30-second read</div>
+<div class="glance-grid">
+<div class="glance-cell">
+<div class="glance-cell-label">Primary channel</div>
+<div class="glance-cell-value amber">SMS only</div>
+</div>
+<div class="glance-cell">
+<div class="glance-cell-label">Tone</div>
+<div class="glance-cell-value">Direct / specific</div>
+</div>
+<div class="glance-cell">
+<div class="glance-cell-label">Cadence</div>
+<div class="glance-cell-value">Tue–Thu · 7-day min</div>
+</div>
+<div class="glance-cell">
+<div class="glance-cell-label">Posture trend</div>
+<div class="glance-cell-value down">Hardening ↓</div>
+</div>
+</div>
+<div class="glance-next">
+<strong>Next action:</strong> Send a single SMS this Tuesday with one specific ask and a clear, immediate benefit — do not call, do not ask open-ended questions.
+      </div>
+</div>
+<!-- BRIEF BODY -->
+<div class="brief-body">
+<!-- MAIN COLUMN -->
+<div class="brief-main">
+<!-- BEHAVIORAL SIGNALS -->
+<div class="brief-section">
+<div class="section-heading">Behavioral Signals  ·  18-month window</div>
+<div class="signal-grid">
+<div class="signal-cell">
+<div class="signal-name">Outreach response</div>
+<div class="signal-value amber">31%</div>
+<div class="signal-note">Selective — responds to structured asks, ignores open-ended contact</div>
+</div>
+<div class="signal-cell">
+<div class="signal-name">Appt. adherence</div>
+<div class="signal-value">58%</div>
+<div class="signal-note">Kept when prep instructions were explicit; cancelled when ambiguous</div>
+</div>
+<div class="signal-cell">
+<div class="signal-name">Care gap navigation</div>
+<div class="signal-value">2 / 3</div>
+<div class="signal-note">Two of three gaps closed — both following single-action outreach</div>
+</div>
+<div class="signal-cell">
+<div class="signal-name">Channel behavior</div>
+<div class="signal-value amber">SMS</div>
+<div class="signal-note">100% of responses via SMS; zero engagement with phone or portal</div>
+</div>
+<div class="signal-cell">
+<div class="signal-name">Escalation history</div>
+<div class="signal-value">0</div>
+<div class="signal-note">No prior escalation events — conditional engagement maintained</div>
+</div>
+<div class="signal-cell">
+<div class="signal-name">Pattern stability</div>
+<div class="signal-value amber">Hardening</div>
+<div class="signal-note">Response window narrowing; prior classification was Guidance-Receptive</div>
+</div>
+</div>
+</div>
+<!-- INTERPRETATION -->
+<div class="brief-section">
+<div class="section-heading">Engagement Interpretation</div>
+<p class="interp-para">
+            A 31% outreach response rate does not indicate disengagement for this member.
+            It indicates a <strong>conditional engagement pattern</strong> — one where response
+            is tied to message structure and specificity rather than frequency or relationship.
+            The member has demonstrated willingness to act when the ask is concrete and the
+            benefit is immediate.
+          </p>
+<p class="interp-para">
+            The prior classification as Guidance-Receptive is relevant context.
+            <strong>Posture hardening from Guidance-Receptive to Conditional Actor</strong>
+            typically follows a period of open-ended, relational, or check-in outreach
+            that did not yield action. The member learned that engagement did not require
+            much from them and began filtering accordingly.
+          </p>
+<p class="interp-para">
+            The two successful care gap closures are the most instructive data points.
+            Both followed outreach structured as a single, bounded ask with
+            a specific action step. <strong>This is the pattern to replicate.</strong>
+            The failed gap closure followed an outreach attempt that asked the member
+            to choose between multiple options and schedule a follow-up call.
+          </p>
+<p class="interp-para">
+            The hardening trend warrants attention but not alarm. This member has not
+            disengaged — they are still responding. The priority is to <strong>arrest
+            the hardening before it reaches Disengaged / Avoidant</strong>, which means
+            removing friction from every interaction and eliminating open-ended contact entirely.
+          </p>
+</div>
+<!-- OUTREACH GUIDANCE -->
+<div class="brief-section">
+<div class="section-heading">Outreach Guidance</div>
+<div class="guidance-grid">
+<div class="guidance-card">
+<div class="guidance-card-label">Channel</div>
+<h4>SMS only — do not call</h4>
+<p>This member has a zero response rate to phone contact over 18 months.
+              <strong>Calling this member is not neutral — it is actively counterproductive.</strong>
+              Every unanswered call increases the cost of re-engagement.</p>
+</div>
+<div class="guidance-card">
+<div class="guidance-card-label">Tone &amp; Framing</div>
+<h4>Direct. Transactional. Single ask.</h4>
+<p>Lead with the specific action. Follow with the benefit.
+              Close with a single response option.
+              <strong>Do not open with a greeting, a check-in, or a question about wellbeing.</strong>
+              This member responds to utility, not relationship.</p>
+<div class="tone-spectrum">
+<div class="tone-seg seg1"></div>
+<div class="tone-seg seg2"></div>
+<div class="tone-seg seg3"></div>
+<div class="tone-seg seg4"></div>
+<div class="tone-seg seg5"></div>
+</div>
+<div class="tone-marker">
+<span>Relational</span><span>→ Direct</span>
+</div>
+</div>
+<div class="guidance-card">
+<div class="guidance-card-label">Timing &amp; Cadence</div>
+<h4>Tuesday–Thursday, minimum 7 days between attempts</h4>
+<p>Response data shows a clear mid-week concentration.
+              <strong>Do not send Monday or Friday.</strong>
+              Allow at least 7 days between outreach attempts — this member
+              does not respond faster with higher frequency; they disengage.</p>
+</div>
+<div class="guidance-card">
+<div class="guidance-card-label">Message Construction</div>
+<h4>One ask. One action. One reply.</h4>
+<p>Format: [Specific action] + [Immediate benefit] + [Single response option].
+              Example structure: <strong>"Your flu shot is due. Reply YES and we will
+              text you the nearest location with same-day availability."</strong>
+              Never include multiple steps or options in one message.</p>
+</div>
+</div>
+</div>
+<!-- NEXT STEPS -->
+<div class="brief-section">
+<div class="section-heading">Recommended Next Steps</div>
+<ul class="steps-list">
+<li>
+<span class="step-num">1</span>
+<div><strong>Draft one structured SMS</strong> for the open care gap using the single-ask format above. Route for review before sending — message construction is the highest-leverage variable for this member.</div>
+</li>
+<li>
+<span class="step-num">2</span>
+<div><strong>Remove this member from phone outreach queues</strong> immediately. Phone contact is producing zero response and increasing avoidance risk.</div>
+</li>
+<li>
+<span class="step-num">3</span>
+<div><strong>Monitor posture trend at the 30-day mark.</strong> If the hardening trend continues through the next classification cycle, flag for case review before the member reaches the Disengaged / Avoidant threshold.</div>
+</li>
+<li>
+<span class="step-num">4</span>
+<div><strong>Do not initiate relationship-maintenance contact.</strong> Check-ins, satisfaction surveys, and open-ended questions will not be answered and accelerate posture hardening.</div>
+</li>
+</ul>
+</div>
+<!-- WHAT TO AVOID -->
+<div class="brief-section">
+<div class="section-heading">What to Avoid</div>
+<ul class="avoid-list">
+<li><span class="avoid-x">✕</span><div><strong>Phone calls.</strong> Not answered, not neutral — actively counterproductive for this member.</div></li>
+<li><span class="avoid-x">✕</span><div><strong>Multi-step messages.</strong> Any message requiring more than one action will not be completed.</div></li>
+<li><span class="avoid-x">✕</span><div><strong>Open-ended questions.</strong> "How are you feeling?" and "Is there anything we can help with?" will not receive responses.</div></li>
+<li><span class="avoid-x">✕</span><div><strong>Frequency escalation.</strong> Sending more messages does not increase response rate for Conditional Actors — it accelerates disengagement.</div></li>
+<li><span class="avoid-x">✕</span><div><strong>Portal prompts.</strong> No portal engagement in 18 months. Do not route this member to self-service tools.</div></li>
+</ul>
+</div>
+</div><!-- /brief-main -->
+<!-- SIDEBAR -->
+<div class="brief-sidebar">
+<div class="sidebar-section">
+<div class="sidebar-heading">Member Profile</div>
+<div class="meta-row">
+<span class="meta-key">Member ID</span>
+<span class="meta-val">4471-C</span>
+</div>
+<div class="meta-row">
+<span class="meta-key">Program</span>
+<span class="meta-val">Care Management</span>
+</div>
+<div class="meta-row">
+<span class="meta-key">Signal window</span>
+<span class="meta-val">18 months</span>
+</div>
+<div class="meta-row">
+<span class="meta-key">Brief validity</span>
+<span class="meta-val">90 days</span>
+</div>
+<div class="meta-row">
+<span class="meta-key">Assigned CM</span>
+<span class="meta-val">Unassigned</span>
+</div>
+</div>
+<div class="sidebar-section">
+<div class="sidebar-heading">Classification History</div>
+<div class="history-item">
+<div class="history-dot" style="background:#b45309"></div>
+<span class="history-period">Current</span>
+<span class="history-posture">Conditional Actor</span>
+<span class="history-conf">74%</span>
+</div>
+<div class="history-item">
+<div class="history-dot" style="background:#3d7a36"></div>
+<span class="history-period">Q3 2025</span>
+<span class="history-posture">Guidance-Receptive</span>
+<span class="history-conf">81%</span>
+</div>
+<div class="history-item">
+<div class="history-dot" style="background:#3d7a36"></div>
+<span class="history-period">Q2 2025</span>
+<span class="history-posture">Guidance-Receptive</span>
+<span class="history-conf">79%</span>
+</div>
+<div class="history-item">
+<div class="history-dot" style="background:#1d6fa4"></div>
+<span class="history-period">Q1 2025</span>
+<span class="history-posture">Self-Directed</span>
+<span class="history-conf">62%</span>
+</div>
+</div>
+<div class="sidebar-section">
+<div class="sidebar-heading">Motivational Posture Spectrum</div>
+<div class="posture-spectrum">
+<div class="spectrum-item">
+<div class="spectrum-dot" style="background:#1d6fa4"></div>
+<span class="spectrum-item-name">Self-Directed</span>
+</div>
+<div class="spectrum-item">
+<div class="spectrum-dot" style="background:#3d7a36"></div>
+<span class="spectrum-item-name">Guidance-Receptive</span>
+</div>
+<div class="spectrum-item current">
+<div class="spectrum-dot" style="background:#b45309"></div>
+<span class="spectrum-item-name">Conditional Actor</span>
+<span class="spectrum-item-arrow">◀ current</span>
+</div>
+<div class="spectrum-item">
+<div class="spectrum-dot" style="background:#7c3d3d"></div>
+<span class="spectrum-item-name">Disengaged / Avoidant</span>
+</div>
+</div>
+</div>
+<div class="sidebar-section">
+<div class="sidebar-heading">Escalation Threshold</div>
+<div class="escalation-box">
+<div class="escalation-box-label">Watch condition</div>
+<p>If no response to next two structured outreach attempts, <strong>flag for case review</strong> before reclassification. Posture is hardening toward Disengaged / Avoidant.</p>
+</div>
+</div>
+<div class="sidebar-section">
+<div class="sidebar-heading">Framework Reference</div>
+<div class="meta-row">
+<span class="meta-key">Framework</span>
+<span class="meta-val">MIF v2.1</span>
+</div>
+<div class="meta-row">
+<span class="meta-key">Method</span>
+<span class="meta-val">Behavioral classification</span>
+</div>
+<div class="meta-row">
+<span class="meta-key">Cycle</span>
+<span class="meta-val">90-day refresh</span>
+</div>
+</div>
+</div><!-- /brief-sidebar -->
+</div><!-- /brief-body -->
+<!-- BRIEF FOOTER -->
+<div class="brief-footer">
+<span>Mnomis Outreach Intelligence  ·  Motivational Intelligence Framework</span>
+<span>Member 4471-C  ·  Generated 14 Feb 2026  ·  Valid 90 days</span>
+</div>
+</div><!-- /brief -->
+<div class="illustrative-notice">
+    Illustrative example  ·  All member data is fictional and for demonstration purposes only
+  </div>
+</div><!-- /page -->
+<footer>
+<div class="container" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center;">
+  <div>
+    <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
+    <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
+    <a href="mailto:hello@mnomis.com" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;">hello@mnomis.com</a>
+  </div>
+  <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+    <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
+    <a href="/about/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Why Mnomis</a>
+    <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Our Framework</a>
+    <a href="/brief-example/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Sample Brief</a>
+    <a href="/pilot/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Pilot</a>
+  </nav>
+</div>
+</footer>
+<script src="/js/nav-active.js" defer></script>
+</body>
+</html>

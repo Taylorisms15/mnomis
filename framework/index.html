@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="/css/styles.css"><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Framework — Mnomis</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+    --navy:       #0f2341;
+    --navy-mid:   #1a3459;
+    --green:      #3d7a36;
+    --green-lt:   #5a9e52;
+    --slate:      #3d4f63;
+    --fog:        #f2f4f7;
+    --fog-dark:   #e6eaef;
+    --white:      #ffffff;
+    --text:       #1e2d3d;
+    --muted:      #5a6a7a;
+    --rule:       #d0d8e4;
+
+    /* posture colors */
+    --p1-color:   #1d6fa4;
+    --p1-bg:      #eff6fb;
+    --p1-border:  #bdd9ee;
+    --p2-color:   #3d7a36;
+    --p2-bg:      #f0f7ef;
+    --p2-border:  #b3d9af;
+    --p3-color:   #b45309;
+    --p3-bg:      #fef9f0;
+    --p3-border:  #e8c97a;
+    --p4-color:   #7c3d3d;
+    --p4-bg:      #fdf2f2;
+    --p4-border:  #e8b4b4;
+
+    --serif: "Libre Baskerville", Georgia, serif;
+    --sans:  "DM Sans", system-ui, sans-serif;
+    --mono:  "DM Mono", monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--white);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+/* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 5rem 2rem 4.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 80% at 80% 50%, rgba(61,122,54,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-lt);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+  .hero-lead {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+  }
+
+  /* ── SHARED ── */
+  .container { max-width: 1080px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  p { color: var(--slate); }
+  .rule { height: 1px; background: var(--rule); }
+
+  /* ── IN-PAGE NAV ── */
+  .page-nav {
+    background: var(--fog);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    position: sticky;
+    top: 60px;
+    z-index: 90;
+  }
+  .page-nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .page-nav a {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.85rem 1.25rem;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+  .page-nav a:hover { color: var(--navy); }
+  .page-nav a.current { color: var(--navy); border-bottom-color: var(--green); }
+
+  /* ── PREMISE ── */
+  .premise-section { padding: 5rem 2rem; }
+  .premise-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 2.5rem;
+  }
+  .premise-copy p {
+    font-size: 0.975rem;
+    line-height: 1.85;
+    color: var(--slate);
+    margin-bottom: 1.1rem;
+  }
+  .premise-copy p:last-child { margin-bottom: 0; }
+  .premise-copy strong { color: var(--text); font-weight: 600; }
+
+  .premise-contrast {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .contrast-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--rule);
+  }
+  .contrast-cell {
+    background: var(--white);
+    padding: 1.25rem 1.5rem;
+  }
+  .contrast-cell.shaded { background: var(--fog); }
+  .contrast-heading {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .contrast-heading.old { color: var(--muted); }
+  .contrast-heading.new { color: var(--green); }
+  .contrast-cell ul { list-style: none; }
+  .contrast-cell ul li {
+    font-size: 0.85rem;
+    color: var(--slate);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--fog-dark);
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    line-height: 1.45;
+  }
+  .contrast-cell ul li:last-child { border-bottom: none; }
+  .contrast-cell ul li .marker { flex-shrink: 0; margin-top: 4px; font-size: 11px; }
+  .marker-old { color: var(--muted); }
+  .marker-new { color: var(--green); }
+
+  /* ── SIGNALS ── */
+  .signals-section {
+    background: var(--fog);
+    padding: 4.5rem 2rem;
+  }
+  .signals-intro {
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+  .signals-intro p {
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: var(--slate);
+    margin-top: 0.75rem;
+  }
+  .signals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .signal-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+  }
+  .signal-card-icon {
+    width: 36px; height: 36px;
+    border-radius: 2px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .signal-card h3 { margin-bottom: 0.5rem; }
+  .signal-card p { font-size: 0.875rem; line-height: 1.65; }
+  .signal-card .signal-examples {
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--fog-dark);
+  }
+  .signal-examples-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .signal-example-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-family: var(--mono);
+    background: var(--fog);
+    border: 1px solid var(--fog-dark);
+    padding: 0.15rem 0.5rem;
+    margin: 0.15rem 0.15rem 0 0;
+    color: var(--slate);
+  }
+
+  .signals-note {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--green);
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    color: var(--slate);
+    line-height: 1.7;
+    max-width: 680px;
+  }
+  .signals-note strong { color: var(--text); font-weight: 600; }
+
+  /* ── POSTURES ── */
+  .postures-section { padding: 5rem 2rem; }
+  .postures-intro {
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+  .postures-intro p {
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: var(--slate);
+    margin-top: 0.75rem;
+  }
+
+  /* posture spectrum bar */
+  .spectrum-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-bottom: 3rem;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .spectrum-cell {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .spectrum-cell.p1 { background: var(--p1-bg); color: var(--p1-color); border-top: 3px solid var(--p1-color); }
+  .spectrum-cell.p2 { background: var(--p2-bg); color: var(--p2-color); border-top: 3px solid var(--p2-color); }
+  .spectrum-cell.p3 { background: var(--p3-bg); color: var(--p3-color); border-top: 3px solid var(--p3-color); }
+  .spectrum-cell.p4 { background: var(--p4-bg); color: var(--p4-color); border-top: 3px solid var(--p4-color); }
+  .spectrum-arrow { font-size: 10px; color: var(--muted); text-align: center; margin-bottom: 2.5rem; font-family: var(--mono); letter-spacing: 0.08em; }
+
+  /* posture cards */
+  .posture-cards { display: flex; flex-direction: column; gap: 2px; background: var(--rule); border: 1px solid var(--rule); }
+  .posture-card {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr;
+    gap: 0;
+  }
+  .posture-card-identity {
+    padding: 2rem;
+    border-right: 1px solid var(--rule);
+  }
+  .posture-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .posture-num.p1 { color: var(--p1-color); }
+  .posture-num.p2 { color: var(--p2-color); }
+  .posture-num.p3 { color: var(--p3-color); }
+  .posture-num.p4 { color: var(--p4-color); }
+
+  .posture-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .posture-name.p1 { color: var(--p1-color); }
+  .posture-name.p2 { color: var(--p2-color); }
+  .posture-name.p3 { color: var(--p3-color); }
+  .posture-name.p4 { color: var(--p4-color); }
+
+  .posture-definition {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--slate);
+  }
+  .posture-card-signals {
+    padding: 2rem;
+    border-right: 1px solid var(--rule);
+  }
+  .posture-card-guidance { padding: 2rem; }
+  .posture-col-heading {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--fog-dark);
+  }
+  .posture-signal-list { list-style: none; }
+  .posture-signal-list li {
+    font-size: 0.85rem;
+    color: var(--slate);
+    padding: 0.3rem 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--fog-dark);
+    line-height: 1.45;
+  }
+  .posture-signal-list li:last-child { border-bottom: none; }
+  .posture-signal-list li::before {
+    content: '—';
+    flex-shrink: 0;
+    color: var(--rule);
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  .guidance-pill-row { display: flex; flex-direction: column; gap: 0.5rem; }
+  .guidance-pill {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    color: var(--slate);
+    line-height: 1.45;
+  }
+  .guidance-pill-label {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    min-width: 60px;
+    text-align: center;
+    margin-top: 1px;
+  }
+  .lbl-p1 { background: var(--p1-bg); color: var(--p1-color); }
+  .lbl-p2 { background: var(--p2-bg); color: var(--p2-color); }
+  .lbl-p3 { background: var(--p3-bg); color: var(--p3-color); }
+  .lbl-p4 { background: var(--p4-bg); color: var(--p4-color); }
+
+  /* ── CONFIDENCE BLOCK ── */
+  .posture-card-confidence {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--rule);
+    background: var(--fog);
+  }
+  .confidence-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+  .confidence-toggle::-webkit-details-marker { display: none; }
+  .confidence-toggle-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .confidence-toggle-icon {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--fog-dark);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.2s, background 0.15s;
+  }
+  details[open] .confidence-toggle-icon { transform: rotate(180deg); background: var(--navy); }
+  details[open] .confidence-toggle-icon svg path { stroke: #fff; }
+  .confidence-body {
+    padding: 0 2rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .confidence-block-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .confidence-variant {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .confidence-variant-heading {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .conf-high { color: var(--green); }
+  .conf-low  { color: var(--muted); }
+  .confidence-variant p {
+    font-size: 0.825rem;
+    line-height: 1.55;
+    color: var(--slate);
+  }
+  .confidence-variant p strong { color: var(--text); font-weight: 500; }
+
+  /* widen posture card to 4-col when confidence row present */
+  .posture-card {
+    grid-template-columns: 260px 1fr 1fr;
+    flex-wrap: wrap;
+  }
+
+  /* ── CLASSIFICATION ── */
+  .classification-section {
+    background: var(--fog);
+    padding: 5rem 2rem;
+  }
+  .classification-intro {
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+  .classification-intro p {
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: var(--slate);
+    margin-top: 0.75rem;
+  }
+
+  .process-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+  .flow-step {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+  .flow-step-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .flow-step-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .flow-step-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .flow-arrow {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    padding: 0 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .classification-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .classification-note {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+  }
+  .classification-note h3 { margin-bottom: 0.5rem; }
+  .classification-note p { font-size: 0.875rem; line-height: 1.7; }
+  .classification-note p strong { color: var(--text); font-weight: 500; }
+
+  /* ── BEHAVIORAL GROUNDING ── */
+  .grounding-section { padding: 5rem 2rem; }
+  .grounding-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2.5rem;
+  }
+  .grounding-copy p {
+    font-size: 0.975rem;
+    line-height: 1.85;
+    color: var(--slate);
+    margin-bottom: 1rem;
+  }
+  .grounding-copy p:last-child { margin-bottom: 0; }
+  .grounding-copy strong { color: var(--text); font-weight: 600; }
+
+  .theory-list { list-style: none; }
+  .theory-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .theory-item:last-child { border-bottom: none; }
+  .theory-abbr {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: 0.05em;
+    background: var(--fog);
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.5rem;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .theory-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+  .theory-application {
+    font-size: 0.825rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 4.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 80% at 60% 50%, rgba(61,122,54,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-inner { max-width: 540px; margin: 0 auto; position: relative; }
+  .cta-inner .section-label { color: var(--green-lt); text-align: center; }
+  .cta-inner h2 { color: #fff; margin-bottom: 1rem; }
+  .cta-inner p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.7rem 1.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--green); color: #fff; }
+  .btn-primary:hover { background: var(--green-lt); }
+  .btn-secondary { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.15); }
+  .btn-secondary:hover { background: rgba(255,255,255,0.14); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+    padding: 2rem;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.7;
+    font-family: var(--mono);
+  }
+  footer strong { color: rgba(255,255,255,0.75); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+  .hero h1      { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-lead    { animation: fadeUp 0.6s 0.2s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .posture-card { grid-template-columns: 1fr; }
+    .posture-card-signals, .posture-card-guidance { border-top: 1px solid var(--rule); }
+    .posture-card-identity, .posture-card-signals { border-right: none; }
+    .process-flow { grid-template-columns: 1fr 1fr; }
+    .flow-arrow { display: none; }
+  }
+  @media (max-width: 768px) {
+    .premise-split, .grounding-split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .signals-grid { grid-template-columns: 1fr; }
+    .classification-notes { grid-template-columns: 1fr; }
+    .spectrum-bar { grid-template-columns: 1fr 1fr; }
+}
+  @media (max-width: 480px) {
+    .process-flow { grid-template-columns: 1fr; }
+    .spectrum-bar { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<!-- BUILD: v4-header -->
+<!-- BUILD: fullfix-v6 -->
+<header class="site-header" data-build="fullfix-v6">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <img src="/assets/mnomis-logo.png" alt="Mnomis">
+    </a>
+    <nav class="main-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/framework/" class="nav-link">Framework</a>
+      <a href="/brief-example/" class="nav-link">Sample Brief</a>
+      <a href="/pilot/" class="nav-link">Pilot</a>
+      <a href="/about/" class="nav-link">Why Mnomis</a>
+    </nav>
+  </div>
+</header>
+<!-- IN-PAGE NAV -->
+<div class="page-nav">
+<div class="page-nav-inner">
+<a class="current" href="#premise">Premise</a>
+<a href="#signals">Behavioral Signals</a>
+<a href="#postures">The Four Postures</a>
+<a href="#classification">Classification</a>
+<a href="#grounding">Theoretical Grounding</a>
+</div>
+</div>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<p class="hero-eyebrow">Behavioral intelligence for care management teams</p>
+<h1>Engagement is not random.<br/><em>It is interpretable.</em></h1>
+<p class="hero-lead">
+      Your outreach data already contains the answer. Mnomis reads the behavioral 
+      signals in your systems — response patterns, appointment history, care gap 
+      navigation — and classifies each member's motivational posture. The result 
+      is guidance your care managers can act on in 90 seconds.
+    </p>
+</div>
+</section>
+<!-- PREMISE -->
+<section class="premise-section" id="premise">
+<div class="container">
+<p class="section-label">The premise</p>
+<h2>Risk tells you who needs help.<br/>Readiness tells you how to deliver it.</h2>
+<div class="premise-split">
+<div class="premise-copy">
+<p>
+          Risk stratification is necessary — but it answers a different question than 
+          engagement strategy. Knowing that a member is high-risk tells you they 
+          matter. It does not tell you whether they will respond to a phone call, 
+          what kind of message will feel relevant to them, or whether your current 
+          outreach approach is reinforcing avoidance rather than creating access.
+        </p>
+<p>
+<strong>Motivational posture is the missing layer.</strong> It describes how a member 
+          is oriented toward their own care — their readiness to act, their preferred 
+          mode of interaction, and the conditions under which they engage or withdraw. 
+          That orientation is consistent over time and it is readable from behavioral 
+          signals that are already in your systems.
+        </p>
+<p>
+          The Motivational Intelligence Framework was built to make that layer 
+          accessible to care management teams — without new surveys, without 
+          clinical inference, and without the complexity that makes behavioral 
+          tools impractical at the point of care.
+        </p>
+</div>
+<div>
+<div class="premise-contrast">
+<div class="contrast-row">
+<div class="contrast-cell shaded">
+<div class="contrast-heading old">Risk stratification answers</div>
+<ul>
+<li><span class="marker marker-old">—</span>Who is clinically vulnerable?</li>
+<li><span class="marker marker-old">—</span>Who may deteriorate?</li>
+<li><span class="marker marker-old">—</span>Who should be prioritized?</li>
+<li><span class="marker marker-old">—</span>Where is utilization risk highest?</li>
+</ul>
+</div>
+<div class="contrast-cell">
+<div class="contrast-heading new">Motivational posture answers</div>
+<ul>
+<li><span class="marker marker-new">+</span>Who will respond — and how?</li>
+<li><span class="marker marker-new">+</span>Which channel will land?</li>
+<li><span class="marker marker-new">+</span>What tone will feel relevant?</li>
+<li><span class="marker marker-new">+</span>What is reinforcing avoidance?</li>
+</ul>
+</div>
+</div>
+<div class="contrast-row">
+<div class="contrast-cell" style="grid-column: span 2; background: var(--navy); padding: 1rem 1.5rem;">
+<p style="font-size:0.85rem; color:rgba(255,255,255,0.65); line-height:1.65;">
+<strong style="color:#fff;">Both are necessary.</strong> Risk stratification without engagement intelligence 
+                produces outreach that is clinically prioritized but behaviorally misaligned. 
+                The MIF does not replace risk stratification — it answers the question risk cannot.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="rule"></div>
+<!-- SIGNALS -->
+<section class="signals-section" id="signals">
+<div class="container">
+<div class="signals-intro">
+<p class="section-label">Behavioral signals</p>
+<h2>The data is already there.</h2>
+<p>
+        Posture classification does not require new data collection, surveys, 
+        or clinical inference. It is derived from behavioral signals that exist 
+        in every care management organization's systems — the record of how members 
+        have actually responded to outreach over time.
+      </p>
+</div>
+<div class="signals-grid">
+<div class="signal-card">
+<div class="signal-card-icon">
+<svg fill="none" height="18" viewbox="0 0 18 18" width="18"><path d="M3 9l4 4 8-8" stroke="#5a9e52" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h3>Outreach Response History</h3>
+<p>Whether and how a member has responded to contact attempts across channels — not just overall rate, but pattern and consistency.</p>
+<div class="signal-examples">
+<div class="signal-examples-label">Signal examples</div>
+<span class="signal-example-tag">SMS open rate</span>
+<span class="signal-example-tag">Call answer rate</span>
+<span class="signal-example-tag">Portal logins</span>
+<span class="signal-example-tag">Response latency</span>
+</div>
+</div>
+<div class="signal-card">
+<div class="signal-card-icon">
+<svg fill="none" height="18" viewbox="0 0 18 18" width="18"><rect height="12" rx="1.5" stroke="#5a9e52" stroke-width="1.5" width="12" x="3" y="3"></rect><path d="M6 9h6M9 6v6" stroke="#5a9e52" stroke-linecap="round" stroke-width="1.5"></path></svg>
+</div>
+<h3>Appointment Adherence</h3>
+<p>The pattern of kept, cancelled, and missed appointments — including whether cancellations are advance-notice or same-day, and whether rescheduling follows.</p>
+<div class="signal-examples">
+<div class="signal-examples-label">Signal examples</div>
+<span class="signal-example-tag">Keep rate</span>
+<span class="signal-example-tag">Cancellation pattern</span>
+<span class="signal-example-tag">Reschedule rate</span>
+<span class="signal-example-tag">No-show frequency</span>
+</div>
+</div>
+<div class="signal-card">
+<div class="signal-card-icon">
+<svg fill="none" height="18" viewbox="0 0 18 18" width="18"><path d="M4 14V9M8 14V6M12 14V4M16 14H2" stroke="#5a9e52" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<h3>Care Gap Navigation</h3>
+<p>How a member has responded to care gap closure outreach — whether gaps are addressed promptly, conditionally, or consistently left open despite contact.</p>
+<div class="signal-examples">
+<div class="signal-examples-label">Signal examples</div>
+<span class="signal-example-tag">Gap closure rate</span>
+<span class="signal-example-tag">Time to action</span>
+<span class="signal-example-tag">Partial completion</span>
+<span class="signal-example-tag">Multi-gap behavior</span>
+</div>
+</div>
+</div>
+<div class="signals-note">
+<strong>What these signals reveal:</strong> Individually, each signal is informative but limited. 
+      Longitudinally — interpreted as a pattern across time and contact types — they reveal 
+      a stable orientation toward care engagement. That is what posture classification reads. 
+      Not a snapshot. A posture.
+    </div>
+</div>
+</section>
+<!-- POSTURES -->
+<section class="postures-section" id="postures">
+<div class="container">
+<div class="postures-intro">
+<p class="section-label">The four postures</p>
+<h2>Every member falls somewhere<br/>on this spectrum.</h2>
+<p>
+        The MIF classifies members into one of four motivational postures. 
+        These are not personality types and they are not permanent — 
+        they describe a member's current orientation toward their own care, 
+        as expressed through their behavioral history. Postures can shift, 
+        and the classification is updated on a 90-day cycle.
+      </p>
+</div>
+<div class="spectrum-bar">
+<div class="spectrum-cell p1">Self-Directed</div>
+<div class="spectrum-cell p2">Guidance-Receptive</div>
+<div class="spectrum-cell p3">Conditional Actor</div>
+<div class="spectrum-cell p4">Disengaged / Avoidant</div>
+</div>
+<p class="spectrum-arrow">← Most engaged                                          Least engaged →</p>
+<div class="posture-cards">
+<!-- P1 -->
+<div class="posture-card">
+<div class="posture-card-identity">
+<div class="posture-num p1">Posture 01</div>
+<div class="posture-name p1">Self-Directed</div>
+<p class="posture-definition">
+            Actively manages their own care. Seeks information, initiates contact, 
+            and completes care actions without prompting. Outreach is best received 
+            when it respects autonomy and provides information rather than instruction.
+          </p>
+</div>
+<div class="posture-card-signals">
+<div class="posture-col-heading">Signal pattern</div>
+<ul class="posture-signal-list">
+<li>High and consistent outreach response rate across channels</li>
+<li>Appointments kept proactively; cancellations are advance-notice with rescheduling</li>
+<li>Care gaps closed promptly, often before direct outreach</li>
+<li>Portal and self-service engagement above cohort average</li>
+</ul>
+</div>
+<div class="posture-card-guidance">
+<div class="posture-col-heading">Outreach orientation</div>
+<div class="guidance-pill-row">
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p1">Channel</span>Portal and email — respects their preference for self-service</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p1">Tone</span>Informational. Provide resources and options, not directives</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p1">Cadence</span>Low frequency — they will reach out when ready</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p1">Risk</span>Over-contact erodes trust and signals low confidence in them</div>
+</div>
+</div>
+<div class="posture-card-confidence">
+<details>
+<summary class="confidence-toggle">
+<div class="confidence-toggle-icon">
+<svg fill="none" height="8" viewbox="0 0 8 8" width="8"><path d="M1.5 3L4 5.5 6.5 3" stroke="#5a6a7a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"></path></svg>
+</div>
+<span class="confidence-toggle-label">Confidence — expand to view</span>
+</summary>
+<div class="confidence-body">
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-high">High confidence</div>
+<p>Signals are consistent across all three dimensions — response, appointments, and care gap navigation — with stable pattern across the full 18-month window. <strong>Act on guidance with confidence.</strong></p>
+</div>
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-low">Low confidence</div>
+<p>Self-directed signals present but inconsistent — may reflect a member in transition from Guidance-Receptive, or a recent period of disruption (care manager change, health event). <strong>Monitor; avoid reducing contact frequency prematurely.</strong></p>
+</div>
+</div></details>
+</div>
+</div>
+</div>
+<!-- P2 -->
+<div class="posture-card">
+<div class="posture-card-identity">
+<div class="posture-num p2">Posture 02</div>
+<div class="posture-name p2">Guidance-Receptive</div>
+<p class="posture-definition">
+            Responds positively to care manager contact and follows through on recommendations. 
+            Values the relationship and the guidance. Outreach is most effective when 
+            it is warm, consistent, and positions the care manager as a trusted partner.
+          </p>
+</div>
+<div class="posture-card-signals">
+<div class="posture-col-heading">Signal pattern</div>
+<ul class="posture-signal-list">
+<li>Consistent response to outreach, especially when contact is from a named care manager</li>
+<li>Strong appointment adherence following verbal or personal confirmation</li>
+<li>Care gaps closed when specifically recommended and followed up on</li>
+<li>Engagement declines during care manager transitions or periods of impersonal contact</li>
+</ul>
+</div>
+<div class="posture-card-guidance">
+<div class="posture-col-heading">Outreach orientation</div>
+<div class="guidance-pill-row">
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p2">Channel</span>Phone and SMS — personal contact drives response</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p2">Tone</span>Warm and relational. Named care manager contact where possible</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p2">Cadence</span>Regular, predictable touchpoints — consistency signals care</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p2">Risk</span>Care manager transitions and impersonal outreach cause disengagement</div>
+</div>
+</div>
+<div class="posture-card-confidence">
+<details>
+<summary class="confidence-toggle">
+<div class="confidence-toggle-icon">
+<svg fill="none" height="8" viewbox="0 0 8 8" width="8"><path d="M1.5 3L4 5.5 6.5 3" stroke="#5a6a7a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"></path></svg>
+</div>
+<span class="confidence-toggle-label">Confidence — expand to view</span>
+</summary>
+<div class="confidence-body">
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-high">High confidence</div>
+<p>Consistent response to named care manager contact, strong appointment follow-through, and pattern holds across multiple care managers or contact periods. <strong>Relational outreach approach is validated.</strong></p>
+</div>
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-low">Low confidence</div>
+<p>Receptive signals clustered around specific periods or care managers — may indicate relationship-dependent engagement rather than stable posture. <strong>Prioritize continuity of care manager assignment before drawing conclusions.</strong></p>
+</div>
+</div></details>
+</div>
+</div>
+</div>
+<!-- P3 -->
+<div class="posture-card">
+<div class="posture-card-identity">
+<div class="posture-num p3">Posture 03</div>
+<div class="posture-name p3">Conditional Actor</div>
+<p class="posture-definition">
+            Engages when conditions are clearly defined and the ask is specific and bounded. 
+            Responds to concrete requests with visible benefit attached. 
+            Disengages when outreach is open-ended, multi-step, or does not 
+            connect to an immediate concern.
+          </p>
+</div>
+<div class="posture-card-signals">
+<div class="posture-col-heading">Signal pattern</div>
+<ul class="posture-signal-list">
+<li>Selective response — engages with structured asks, ignores open-ended contact</li>
+<li>Appointments kept when prep instructions are clear; cancelled when ambiguous</li>
+<li>Care gaps closed when contacted with a single specific action step</li>
+<li>No response to check-in or relationship-maintenance outreach</li>
+</ul>
+</div>
+<div class="posture-card-guidance">
+<div class="posture-col-heading">Outreach orientation</div>
+<div class="guidance-pill-row">
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p3">Channel</span>SMS primary — direct, low-friction, single action</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p3">Tone</span>Direct and transactional. Lead with the ask, state the benefit</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p3">Cadence</span>Low frequency, minimum 7 days between attempts</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p3">Risk</span>Multi-ask or open-ended messages will not be completed</div>
+</div>
+</div>
+<div class="posture-card-confidence">
+<details>
+<summary class="confidence-toggle">
+<div class="confidence-toggle-icon">
+<svg fill="none" height="8" viewbox="0 0 8 8" width="8"><path d="M1.5 3L4 5.5 6.5 3" stroke="#5a6a7a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"></path></svg>
+</div>
+<span class="confidence-toggle-label">Confidence — expand to view</span>
+</summary>
+<div class="confidence-body">
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-high">High confidence</div>
+<p>Clear and repeatable pattern — responds to structured asks, ignores open-ended contact — visible across multiple outreach campaigns and contact types. <strong>Message construction guidance is the highest-leverage intervention.</strong></p>
+</div>
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-low">Low confidence</div>
+<p>Conditional signals present but sparse — may reflect thin outreach history rather than established posture. Could be an earlier-stage Guidance-Receptive member who has not been contacted in the right way. <strong>Test one structured SMS before committing to conditional approach.</strong></p>
+</div>
+</div></details>
+</div>
+</div>
+
+<!-- P4 -->
+<div class="posture-card">
+<div class="posture-card-identity">
+<div class="posture-num p4">Posture 04</div>
+<div class="posture-name p4">Disengaged / Avoidant</div>
+<p class="posture-definition">
+            Has withdrawn from care engagement across channels and contact types. 
+            Standard outreach is not landing — and repeated attempts may be 
+            reinforcing the avoidance pattern. Re-engagement requires a fundamentally 
+            different approach, often through a trusted intermediary or life event trigger.
+          </p>
+</div>
+<div class="posture-card-signals">
+<div class="posture-col-heading">Signal pattern</div>
+<ul class="posture-signal-list">
+<li>Near-zero response across all outreach channels over extended period</li>
+<li>Missed appointments without cancellation or rescheduling</li>
+<li>Open care gaps unaddressed despite multiple contact attempts</li>
+<li>May have been Conditional Actor or Guidance-Receptive in a prior period</li>
+</ul>
+</div>
+<div class="posture-card-guidance">
+<div class="posture-col-heading">Outreach orientation</div>
+<div class="guidance-pill-row">
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p4">Channel</span>Suspend standard outreach — evaluate trusted intermediary options</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p4">Tone</span>Non-clinical, low-stakes first contact if re-engagement is attempted</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p4">Cadence</span>Minimal — continued high-frequency contact reinforces avoidance</div>
+<div class="guidance-pill"><span class="guidance-pill-label lbl-p4">Risk</span>Standard escalation protocols will not work — escalate to case review</div>
+</div>
+</div>
+<div class="posture-card-confidence">
+<details>
+<summary class="confidence-toggle">
+<div class="confidence-toggle-icon">
+<svg fill="none" height="8" viewbox="0 0 8 8" width="8"><path d="M1.5 3L4 5.5 6.5 3" stroke="#5a6a7a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"></path></svg>
+</div>
+<span class="confidence-toggle-label">Confidence — expand to view</span>
+</summary>
+<div class="confidence-body">
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-high">High confidence</div>
+<p>Zero or near-zero response across all channels over 12+ months, with missed appointments and open care gaps confirming the pattern. Prior period classification was more engaged. <strong>Standard outreach escalation will not work — this requires case review.</strong></p>
+</div>
+<div class="confidence-variant">
+<div class="confidence-variant-heading conf-low">Low confidence</div>
+<p>Avoidant signals present but the behavioral window is short or outreach volume has been low — may be misclassified due to insufficient contact attempts rather than true avoidance. <strong>Do not suspend outreach; attempt two structured contacts before confirming posture.</strong></p>
+</div>
+</div></details>
+</div>
+</div>
+
+
+
+</section>
+<div class="rule"></div>
+<!-- CLASSIFICATION -->
+<section class="classification-section" id="classification">
+<div class="container">
+<div class="classification-intro">
+<p class="section-label">How classification works</p>
+<h2>Longitudinal pattern recognition,<br/>not point-in-time scoring.</h2>
+<p>
+        A single non-response does not make a member Disengaged. 
+        A single appointment kept does not make a member Self-Directed. 
+        Posture is a pattern — and it is only reliably visible across time. 
+        The MIF uses an 18-month behavioral window as the classification basis, 
+        updated on a 90-day cycle.
+      </p>
+</div>
+<div class="process-flow">
+<div class="flow-step">
+<div class="flow-step-num">Input</div>
+<div class="flow-step-title">Behavioral extract</div>
+<div class="flow-step-desc">18-month signal history across outreach, appointments, and care gaps</div>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">
+<div class="flow-step-num">Step 1</div>
+<div class="flow-step-title">Signal normalization</div>
+<div class="flow-step-desc">Signals weighted and normalized across contact frequency and member context</div>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">
+<div class="flow-step-num">Step 2</div>
+<div class="flow-step-title">Pattern classification</div>
+<div class="flow-step-desc">Longitudinal pattern mapped to posture definition with confidence scoring</div>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">
+<div class="flow-step-num">Step 3</div>
+<div class="flow-step-title">Guidance generation</div>
+<div class="flow-step-desc">Channel, tone, timing, and escalation guidance derived from posture classification</div>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">
+<div class="flow-step-num">Output</div>
+<div class="flow-step-title">Outreach Intelligence Brief</div>
+<div class="flow-step-desc">Workflow-ready brief delivered per member, valid for 90 days</div>
+</div>
+</div>
+<div class="classification-notes">
+<div class="classification-note">
+<h3>Why 18 months?</h3>
+<p>
+          Shorter windows capture noise — a busy period, a health event, a care manager transition. 
+          <strong>Eighteen months captures the stable underlying orientation</strong> 
+          while remaining sensitive to genuine posture shifts. 
+          Members who are trending toward disengagement will show that pattern 
+          in the longitudinal data before they fully disengage.
+        </p>
+</div>
+<div class="classification-note">
+<h3>Why a 90-day refresh cycle?</h3>
+<p>
+          Postures are stable — but they are not fixed. A member can move from 
+          Conditional Actor toward Guidance-Receptive when life circumstances change, 
+          or toward Disengaged / Avoidant if outreach remains misaligned. 
+          <strong>The 90-day cycle ensures guidance reflects current orientation</strong>, 
+          not a classification that was accurate a year ago.
+        </p>
+</div>
+<div class="classification-note">
+<h3>What does confidence score mean?</h3>
+<p>
+          Every classification carries a confidence percentage reflecting 
+          signal clarity and pattern consistency. <strong>A low confidence score 
+          is itself meaningful</strong> — it flags members whose behavior is 
+          mixed or transitional, and whose briefs should be read with 
+          that ambiguity in mind.
+        </p>
+</div>
+<div class="classification-note">
+<h3>What if a member has thin data?</h3>
+<p>
+          Members with limited behavioral history — new enrollees, low-contact populations — 
+          receive a flagged brief indicating classification confidence is low. 
+          <strong>No classification is still a signal</strong>: it indicates a member 
+          who has not yet been sufficiently reached to establish a pattern, 
+          which calls for a different initial outreach strategy.
+        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- THEORETICAL GROUNDING -->
+<section class="grounding-section" id="grounding">
+<div class="container">
+<div class="grounding-split">
+<div>
+<p class="section-label">Theoretical grounding</p>
+<h2>Built on published behavioral science.</h2>
+<div class="grounding-copy">
+<p>
+            The four-posture classification system is not proprietary intuition. 
+            Each posture is grounded in published theory about motivation, 
+            self-determination, and health behavior — translated into a 
+            classification schema that is practical at the point of care.
+          </p>
+<p>
+            The goal was a framework that a care manager could act on in 90 seconds 
+            and a compliance officer could audit against peer-reviewed literature. 
+            <strong>Both requirements shaped how the postures were defined 
+            and how the guidance was derived from them.</strong>
+</p>
+<p>
+            The MIF does not claim to replace clinical judgment. It claims to give 
+            care managers one additional layer of interpretable insight — the behavioral 
+            orientation of the member in front of them — so that judgment can be applied 
+            more precisely.
+          </p>
+</div>
+</div>
+<div>
+<ul class="theory-list">
+<li class="theory-item">
+<span class="theory-abbr">SDT</span>
+<div>
+<div class="theory-name">Self-Determination Theory</div>
+<div class="theory-application">Deci &amp; Ryan. Informs the Self-Directed and Guidance-Receptive postures — specifically how autonomy orientation vs. relatedness orientation shapes engagement readiness.</div>
+</div>
+</li>
+<li class="theory-item">
+<span class="theory-abbr">HBM</span>
+<div>
+<div class="theory-name">Health Belief Model</div>
+<div class="theory-application">Rosenstock. Informs perceived benefit and barriers components — particularly relevant to Conditional Actor behavior, where the cost-benefit frame governs whether action occurs.</div>
+</div>
+</li>
+<li class="theory-item">
+<span class="theory-abbr">TTM</span>
+<div>
+<div class="theory-name">Transtheoretical Model</div>
+<div class="theory-application">Prochaska &amp; DiClemente. The stages-of-change framework informs posture as a dynamic state — members can move along the spectrum, and classification tracks that movement.</div>
+</div>
+</li>
+<li class="theory-item">
+<span class="theory-abbr">PMT</span>
+<div>
+<div class="theory-name">Protection Motivation Theory</div>
+<div class="theory-application">Rogers. Informs the Disengaged / Avoidant posture — specifically how threat appraisal and coping appraisal interact when avoidance has become the stable response to health-related contact.</div>
+</div>
+</li>
+<li class="theory-item">
+<span class="theory-abbr">COM-B</span>
+<div>
+<div class="theory-name">COM-B Behavior Model</div>
+<div class="theory-application">Michie et al. The Capability / Opportunity / Motivation framework informs how guidance is derived from posture — matching intervention type to the actual driver of non-engagement.</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="cta-section">
+<div class="cta-inner">
+<p class="section-label">See it applied</p>
+<h2>The framework in action<br/>on your own members.</h2>
+<p>
+      The pilot applies the MIF to a cohort from your care management population 
+      and returns a full brief for every member — at no cost, with no integration required.
+    </p>
+<div class="cta-buttons">
+<a class="btn btn-primary" href="/pilot/">
+        See How Our Pilot Offer Works
+        <svg fill="none" height="12" viewbox="0 0 12 12" width="12"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
+</a>
+<a class="btn btn-secondary" href="/brief-example/">
+        See an example brief
+        <svg fill="none" height="12" viewbox="0 0 12 12" width="12"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
+</a>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<div class="container" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center;">
+  <div>
+    <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
+    <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
+    <a href="mailto:hello@mnomis.com" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;">hello@mnomis.com</a>
+  </div>
+  <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+    <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
+    <a href="/about/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Why Mnomis</a>
+    <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Our Framework</a>
+    <a href="/brief-example/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Sample Brief</a>
+    <a href="/pilot/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Pilot</a>
+  </nav>
+</div>
+</footer>
+<script>
+  // Highlight in-page nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.page-nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('current'));
+        const active = document.querySelector(`.page-nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('current');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+<script src="/js/nav-active.js" defer></script>
+</body>
+</html>

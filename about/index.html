@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="/css/styles.css"><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Why Mnomis</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #0f2341;
+  --navy-mid: #1a3459;
+  --green: #3d7a36;
+  --green-lt: #5a9e52;
+  --slate: #3d4f63;
+  --fog: #f2f4f7;
+  --fog-dark: #e6eaef;
+  --white: #ffffff;
+  --text: #1e2d3d;
+  --muted: #5a6a7a;
+  --rule: #d0d8e4;
+  --serif: "Libre Baskerville", Georgia, serif;
+  --sans: "DM Sans", system-ui, sans-serif;
+  --mono: "DM Mono", monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--white);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+/* HERO */
+.hero {
+  background: var(--navy);
+  padding: 4.5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 75% 60%, rgba(61,122,54,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-lt);
+  margin-bottom: 1.25rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  max-width: 780px;
+}
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+.hero-lead {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+/* SHARED */
+.container { max-width: 1080px; margin: 0 auto; }
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.6rem;
+}
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.18;
+  margin-bottom: 1.1rem;
+}
+p { color: var(--slate); }
+.rule { height: 1px; background: var(--rule); margin: 0; }
+
+/* SECTION 1: CONVICTION */
+.conviction-section { padding: 4.5rem 2rem; }
+.conviction-split {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+.conviction-left .section-label { margin-bottom: 1rem; }
+.conviction-left h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  line-height: 1.22;
+  margin-bottom: 0;
+}
+.conviction-right p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--slate);
+  margin-bottom: 1.1rem;
+}
+.conviction-right p:last-child { margin-bottom: 0; }
+.conviction-right strong { color: var(--text); font-weight: 600; }
+.conviction-divider {
+  height: 1px;
+  background: var(--rule);
+  margin: 1.75rem 0;
+}
+/* ARCHITECTURE PANEL */
+.architecture-panel {
+  background: var(--fog);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--rule);
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+.architecture-panel-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+.arch-item {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--fog-dark);
+}
+.arch-item:first-of-type { border-top: none; padding-top: 0; }
+.arch-item-title {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+}
+.arch-item-body {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* SECTION 2: CREDIBILITY */
+.credentials-section {
+  background: var(--fog);
+  padding: 4.25rem 2rem;
+}
+.credentials-section h2 {
+  max-width: 640px;
+  margin-bottom: 2rem;
+}
+.cred-body-full { max-width: 800px; }
+.cred-body-full p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--slate);
+  margin-bottom: 1.1rem;
+}
+.cred-body-full p:last-child { margin-bottom: 0; }
+.cred-body-full strong { color: var(--text); font-weight: 600; }
+
+.founding-callout {
+  border-left: 3px solid var(--green);
+  padding: 1.1rem 0 1.1rem 1.5rem;
+  margin-top: 2.25rem;
+}
+.founding-callout p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 0;
+}
+.founding-callout strong { color: var(--navy); font-weight: 600; }
+.founding-spec {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* SECTION 3: CAPABILITY */
+.capability-section {
+  background: var(--navy);
+  padding: 4.25rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.capability-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 80% 40%, rgba(61,122,54,0.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+.capability-section .container { position: relative; }
+.capability-section .section-label { color: var(--green-lt); }
+.capability-section h2 { color: #fff; margin-bottom: 2.5rem; }
+.capability-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.capability-row {
+  padding: 2.25rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  max-width: 720px;
+}
+.capability-row:first-child { border-top: none; padding-top: 0; }
+.capability-col-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-lt);
+  margin-bottom: 0.9rem;
+}
+.capability-statement {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 0.75rem;
+}
+.capability-close {
+  font-size: 0.925rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* FOOTER */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.45);
+  padding: 2rem;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.7;
+  font-family: var(--mono);
+}
+footer strong { color: rgba(255,255,255,0.8); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow { animation: fadeUp 0.5s ease both; }
+.hero h1 { animation: fadeUp 0.6s 0.1s ease both; }
+.hero-lead { animation: fadeUp 0.6s 0.2s ease both; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .conviction-split { grid-template-columns: 1fr; gap: 2rem; }
+  .capability-split { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<!-- BUILD: v4-header -->
+<!-- BUILD: fullfix-v6 -->
+<header class="site-header" data-build="fullfix-v6">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <img src="/assets/mnomis-logo.png" alt="Mnomis">
+    </a>
+    <nav class="main-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/framework/" class="nav-link">Framework</a>
+      <a href="/brief-example/" class="nav-link">Sample Brief</a>
+      <a href="/pilot/" class="nav-link">Pilot</a>
+      <a href="/about/" class="nav-link">Why Mnomis</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">The case for Motivational Intelligence</p>
+    <h1>Most outreach fails before it starts.<br/><em>Mnomis changes what you start with.</em></h1>
+    <p class="hero-lead">
+      The organizations that get outreach right aren't working harder. They're starting with a different understanding of who they're reaching. We've watched that pattern play out across industries for twenty-five years. Mnomis exists to make that understanding available to care management teams at scale.
+    </p>
+  </div>
+</section>
+
+<!-- SECTION 1: CONVICTION -->
+<section class="conviction-section">
+  <div class="container">
+    <div class="conviction-split">
+      <div class="conviction-left">
+        <p class="section-label">The case for this work</p>
+        <h2>Outreach fails when it is calibrated to clinical priority instead of motivational posture.</h2>
+      </div>
+      <div class="conviction-right">
+        <p>
+          Most outreach failure is not inevitable. It is the product of a structural mismatch: outreach built around clinical priority, delivered through channels and with framing that does not match how the member is oriented toward their own care.
+          <strong>More contact does not fix that. Motivational posture insight does.</strong>
+        </p>
+        <p>
+          The work is to give care management teams the specific insight they need to stop wasting effort on approaches that will not work and redirect it toward what will.
+        </p>
+        <div class="conviction-divider"></div>
+        <p>
+          Mnomis is built on a structured understanding of the core motivational drivers that shape how people engage: autonomy, guidance, fairness, and relational continuity. These drivers form a person's <strong>motivational posture</strong>.
+        </p>
+        <p>
+          The drivers are stable. Context shifts the mix.
+        </p>
+        <p>
+          Mnomis interprets longitudinal behavioral patterns to identify posture and translate it into clear, compliance-safe guidance — helping care teams align tone, timing, and escalation without overriding clinical judgment.
+        </p>
+      </div>
+      <div class="architecture-panel">
+        <p class="architecture-panel-label">Product Architecture</p>
+        <div class="arch-item">
+          <p class="arch-item-title">Stable Orientation</p>
+          <p class="arch-item-body">Domain-specific engagement posture identified longitudinally. Intentionally slow-moving.</p>
+        </div>
+        <div class="arch-item">
+          <p class="arch-item-title">Salience Overlay</p>
+          <p class="arch-item-body">Context-sensitive activation under stress. Time-bound and reversible.</p>
+        </div>
+        <div class="arch-item">
+          <p class="arch-item-title">Constraint Detection</p>
+          <p class="arch-item-body">Access and structural barriers modeled separately from motivation. Confidence adjusts accordingly.</p>
+        </div>
+        <div class="arch-item">
+          <p class="arch-item-title">Differentiated Guidance</p>
+          <p class="arch-item-body">The same trigger produces different recommended next steps depending on baseline orientation.</p>
+        </div>
+        <div class="arch-item">
+          <p class="arch-item-title">Testable Predictions</p>
+          <p class="arch-item-body">Recommendations generate measurable hypotheses and can be evaluated against behavior-only models.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SECTION 2: CREDIBILITY -->
+<section class="credentials-section">
+  <div class="container">
+    <p class="section-label">Founder's perspective</p>
+    <h2>Twenty-five years of pattern recognition.<br/>Applied where the stakes are highest.</h2>
+    <div class="cred-body-full">
+      <p>
+        For more than two decades, the work has been consistent across industries: not observing behavior, but interpreting what it signals about how people respond to guidance under pressure. That pattern showed up in financial services, retail, fitness, and regulated healthcare contexts alike. The category changed. The underlying dynamic did not.
+      </p>
+      <p>
+        Care management is where this framework launches because it is the highest-signal environment I have encountered. The behavioral data exists. The consequences of misalignment are measurable. And the gap between what risk models identify and what outreach actually achieves is too large to attribute to effort alone.
+      </p>
+      <p>
+        Mnomis is the structured response to that gap — built by someone who came to care management because the conditions here make the problem the most tractable version of it.
+      </p>
+      <div class="founding-callout">
+        <p>
+          This is where the framework gets built for care management specifically — <strong>with one health plan, as a founding partner.</strong> The first deployment is where the framework meets real care management context. The partner who builds it with me gets terms and co-development influence that will not be available once that work is done.
+        </p>
+        <p class="founding-spec">
+          The Motivational Intelligence Framework is fully specified and documented. Available to founding partner candidates.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SECTION 3: CAPABILITY -->
+<section class="capability-section">
+  <div class="container">
+    <p class="section-label">How Mnomis deploys</p>
+    <h2>Built to fit. Designed to protect. Ready to run.</h2>
+    <div class="capability-rows">
+      <div class="capability-row">
+        <p class="capability-col-label">Deployment</p>
+        <p class="capability-statement">Mnomis deploys inside the tools your care management team already uses. No new platform. No workflow disruption. The pilot is structured, time-bounded, and returns posture-aligned outreach guidance from the first cycle.</p>
+        <p class="capability-close">The intent is not to add another layer. It is to change what teams begin with.</p>
+      </div>
+      <div class="capability-row">
+        <p class="capability-col-label">Data and privacy</p>
+        <p class="capability-statement">Mnomis works with anonymous, non-identifying behavioral data by default. We interpret engagement patterns — not personal identity — and PHI is not required at any stage of the process.</p>
+        <p class="capability-close">Outputs are posture guidance, not identity profiles. Everything is designed to be interpretable for clinical and compliance review from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center;">
+    <div>
+      <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
+      <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
+      <a href="/cdn-cgi/l/email-protection#2b434e4747446b46454446425805484446" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;"><span class="__cf_email__" data-cfemail="dbb3beb7b7b49bb6b5b4b6b2a8f5b8b4b6">[email&#160;protected]</span></a>
+    </div>
+    <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
+      <a href="/about/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Why Mnomis</a>
+      <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Our Framework</a>
+      <a href="/brief-example/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Sample Brief</a>
+      <a href="/pilot/" style="font-s

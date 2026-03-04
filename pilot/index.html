@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="/css/styles.css"><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Pilot Program — Mnomis</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+    --navy:      #0f2341;
+    --navy-mid:  #1a3459;
+    --green:     #3d7a36;
+    --green-lt:  #5a9e52;
+    --slate:     #3d4f63;
+    --fog:       #f2f4f7;
+    --fog-dark:  #e6eaef;
+    --white:     #ffffff;
+    --text:      #1e2d3d;
+    --muted:     #5a6a7a;
+    --rule:      #d0d8e4;
+    --serif:     "Libre Baskerville", Georgia, serif;
+    --sans:      "DM Sans", system-ui, sans-serif;
+    --mono:      "DM Mono", monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--white);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+/* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 5rem 2rem 4.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 90% at 80% 50%, rgba(61,122,54,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-lt);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.5vw, 2.9rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: rgba(255,255,255,0.65); }
+  .hero-lead {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .hero-commitments {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .commitment-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .commitment-pill .check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .commitment-pill .check svg { display: block; }
+
+  /* ── SECTIONS ── */
+  section { padding: 4rem 2rem; }
+  .container { max-width: 1080px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  p { color: var(--slate); }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--fog); }
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 16px);
+    right: calc(12.5% + 16px);
+    height: 1px;
+    background: var(--rule);
+    z-index: 0;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .step-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-bottom: 1.1rem;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .step-circle.done { background: var(--green); }
+  .step h3 { text-align: center; margin-bottom: 0.5rem; }
+  .step p { font-size: 0.85rem; line-height: 1.6; }
+  .step-duration {
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── WHAT YOU GET / WHAT WE NEED ── */
+  .exchange-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 2.5rem;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .exchange-col {
+    background: var(--white);
+    padding: 2rem 2rem;
+  }
+  .exchange-col.need { background: var(--fog); }
+  .exchange-heading {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .exchange-heading.get  { color: var(--green); }
+  .exchange-heading.need { color: var(--navy); }
+  .exchange-items { list-style: none; }
+  .exchange-items li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--fog-dark);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--slate);
+  }
+  .exchange-items li:last-child { border-bottom: none; }
+  .exchange-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .exchange-items li strong { color: var(--text); font-weight: 500; }
+
+  /* ── WHAT WE DO NOT NEED ── */
+  .no-need-strip {
+    background: var(--navy);
+    padding: 2rem 2.5rem;
+    margin-top: 2px;
+  }
+  .no-need-strip .no-need-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.85rem;
+  }
+  .no-need-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .no-need-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.75rem;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-family: var(--mono);
+    letter-spacing: 0.03em;
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.25);
+  }
+  .no-need-tag .x { text-decoration: none; color: #ef4444; margin-right: 2px; }
+
+  /* ── DELIVERABLES ── */
+  .deliverables-section { background: var(--white); }
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .deliverable-card {
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--navy);
+    padding: 1.5rem;
+  }
+  .deliverable-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--fog-dark);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+  .deliverable-card h3 { margin-bottom: 0.5rem; }
+  .deliverable-card p { font-size: 0.875rem; line-height: 1.65; }
+
+  /* ── FORM SECTION ── */
+  .form-section {
+    background: var(--fog);
+    padding: 4rem 2rem;
+  }
+  .form-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .form-wrap h2 { text-align: center; margin-bottom: 0.5rem; }
+  .form-wrap .form-lead {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .form-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 2rem 2rem 2rem;
+  }
+  .form-row { margin-bottom: 1.1rem; }
+  .form-row label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 0.4rem;
+    font-family: var(--mono);
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 0.65rem 0.85rem;
+    outline: none;
+    border-radius: 2px;
+    transition: border-color 0.15s;
+    appearance: none;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus {
+    border-color: var(--navy);
+  }
+  .form-row textarea { resize: vertical; min-height: 90px; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .form-submit:hover { background: var(--navy-mid); }
+  .form-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 1rem;
+    line-height: 1.6;
+    font-family: var(--mono);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.45);
+    padding: 2rem 2rem;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.7;
+    font-family: var(--mono);
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow     { animation: fadeUp 0.5s ease both; }
+  .hero h1          { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-lead        { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-commitments { animation: fadeUp 0.6s 0.3s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .steps-row { grid-template-columns: 1fr 1fr; }
+    .steps-row::before { display: none; }
+    .exchange-grid { grid-template-columns: 1fr; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
+    .hero-commitments { gap: 1rem; }
+}
+  @media (max-width: 480px) {
+    .steps-row { grid-template-columns: 1fr; }
+    .no-need-items { flex-direction: column; }
+  }
+
+  /* ── FOUNDING PARTNER SECTION ── */
+  .founding-section {
+    background: var(--navy);
+    padding: 3.5rem 2rem;
+  }
+  .founding-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-top: 2rem;
+  }
+  .founding-cell {
+    background: rgba(255,255,255,0.04);
+    padding: 1.5rem 1.75rem;
+  }
+  .founding-cell-icon {
+    width: 32px; height: 32px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.85rem;
+  }
+  .founding-cell h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .founding-cell p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+  }
+  .founding-cell p strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+  .founding-section .section-label { color: var(--green-lt); }
+  .founding-section h2 { color: #fff; }
+  .founding-section .founding-lead {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    max-width: 580px;
+    margin-top: 0.5rem;
+  }
+  .founding-section .founding-lead strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+  @media (max-width: 700px) {
+    .founding-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── FORM CONFIRMATION ── */
+  .form-confirmation {
+    display: none;
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+  .form-confirmation.visible { display: block; }
+  .confirm-icon {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .confirm-heading {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+  .confirm-body {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .confirm-body strong { color: var(--text); font-weight: 500; }
+
+  @keyframes confirmFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .form-confirmation.visible {
+    animation: confirmFadeIn 0.4s ease both;
+  }
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<!-- BUILD: v4-header -->
+<!-- BUILD: fullfix-v6 -->
+<header class="site-header" data-build="fullfix-v6">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <img src="/assets/mnomis-logo.png" alt="Mnomis">
+    </a>
+    <nav class="main-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/framework/" class="nav-link">Framework</a>
+      <a href="/brief-example/" class="nav-link">Sample Brief</a>
+      <a href="/pilot/" class="nav-link">Pilot</a>
+      <a href="/about/" class="nav-link">Why Mnomis</a>
+    </nav>
+  </div>
+</header>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<p class="hero-eyebrow">Pilot Program</p>
+<h1>See it work<br/><em>on your own members.</em></h1>
+<p class="hero-lead">
+      We classify motivational posture on a cohort from your existing data 
+      and return workflow-ready briefs — at no cost, with no system integration required.
+    </p>
+<div class="hero-commitments">
+<div class="commitment-pill">
+<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
+        No cost
+      </div>
+<div class="commitment-pill">
+<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
+        No integration
+      </div>
+<div class="commitment-pill">
+<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
+        No new tools to learn
+      </div>
+<div class="commitment-pill">
+<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
+        Results in 3 weeks
+      </div>
+</div>
+</div>
+</section>
+<!-- HOW IT WORKS -->
+<section class="how-section">
+<div class="container">
+<p class="section-label">How the pilot works</p>
+<h2>Four steps. Three weeks. Your data.</h2>
+<div class="steps-row">
+<div class="step">
+<div class="step-circle">1</div>
+<h3>Submit a cohort</h3>
+<p>You identify 50–200 members from your care management population. De-identified is fine.</p>
+<div class="step-duration">Week 1</div>
+</div>
+<div class="step">
+<div class="step-circle">2</div>
+<h3>Send a data extract</h3>
+<p>We provide a simple field specification. Outreach history, appointment records, and care gap data — already in your systems.</p>
+<div class="step-duration">Week 1</div>
+</div>
+<div class="step">
+<div class="step-circle">3</div>
+<h3>We classify and brief</h3>
+<p>We run posture classification across your cohort and produce a full Outreach Intelligence Brief for each member.</p>
+<div class="step-duration">Weeks 2–3</div>
+</div>
+<div class="step">
+<div class="step-circle done">4</div>
+<h3>Review and debrief</h3>
+<p>We walk through the briefs with your care management team and show how guidance maps to your current outreach patterns.</p>
+<div class="step-duration">Week 3</div>
+</div>
+</div>
+</div>
+</section>
+<!-- WHAT YOU GET / WHAT WE NEED -->
+<section style="padding: 4rem 2rem 0;">
+<div class="container">
+<p class="section-label">The exchange</p>
+<h2>What you provide. What you receive.</h2>
+<div class="exchange-grid">
+<div class="exchange-col need">
+<div class="exchange-heading need">What you provide</div>
+<ul class="exchange-items">
+<li>
+<span class="exchange-icon">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><rect height="11" rx="1" stroke="#0f2341" stroke-width="1.2" width="10" x="2" y="1.5"></rect><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke="#0f2341" stroke-linecap="round" stroke-width="1.2"></path></svg>
+</span>
+<div><strong>A member cohort of 50–200</strong> from your active care management population. You define the selection criteria.</div>
+</li>
+<li>
+<span class="exchange-icon">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M2 10.5L12 10.5M4.5 3.5v7M7 5.5v5M9.5 7.5v3" stroke="#0f2341" stroke-linecap="round" stroke-width="1.2"></path></svg>
+</span>
+<div><strong>A behavioral data extract</strong> covering outreach response history, appointment adherence, and care gap activity. We provide the field spec.</div>
+</li>
+<li>
+<span class="exchange-icon">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" r="5" stroke="#0f2341" stroke-width="1.2"></circle><path d="M7 4.5v2.75l1.75 1.75" stroke="#0f2341" stroke-linecap="round" stroke-width="1.2"></path></svg>
+</span>
+<div><strong>One debrief session</strong> (60 min) with care management leadership or clinical ops at the close of the pilot.</div>
+</li>
+</ul>
+</div>
+<div class="exchange-col">
+<div class="exchange-heading get">What you receive</div>
+<ul class="exchange-items">
+<li>
+<span class="exchange-icon">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><rect height="11" rx="1" stroke="#3d7a36" stroke-width="1.2" width="10" x="2" y="1.5"></rect><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
+</span>
+<div><strong>One full Outreach Intelligence Brief per member</strong> — posture classification, behavioral interpretation, channel and tone guidance, next steps, and escalation threshold.</div>
+</li>
+<li>
+<span class="exchange-icon">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M2 10.5L12 10.5M4.5 3.5v7M7 5.5v5M9.5 7.5v3" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
+</span>
+<div><strong>A cohort-level engagement summary</strong> — posture distribution, channel misalignment analysis, and estimated wasted outreach attempts across your current population.</div>
+</li>
+<li>
+<span class="exchange-icon">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><circle cx="5" cy="5" r="3" stroke="#3d7a36" stroke-width="1.2"></circle><path d="M8 8l3.5 3.5" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
+</span>
+<div><strong>A pattern analysis</strong> identifying where current outreach strategy diverges from motivational posture — and what alignment would look like at scale.</div>
+</li>
+<li>
+<span class="exchange-icon">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M7 2v10M2 7h10" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
+</span>
+<div><strong>A readout session</strong> with your team to walk through findings, answer questions, and discuss what a full deployment would involve.</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- WHAT WE DO NOT NEED -->
+<div class="no-need-strip">
+<div class="no-need-label">What we do not need</div>
+<div class="no-need-items">
+<div class="no-need-tag"><span class="x">✕</span> System integration</div>
+<div class="no-need-tag"><span class="x">✕</span> API access</div>
+<div class="no-need-tag"><span class="x">✕</span> EHR credentials</div>
+<div class="no-need-tag"><span class="x">✕</span> Clinical notes</div>
+<div class="no-need-tag"><span class="x">✕</span> Claims data</div>
+<div class="no-need-tag"><span class="x">✕</span> IT department involvement</div>
+<div class="no-need-tag"><span class="x">✕</span> Vendor contract</div>
+<div class="no-need-tag"><span class="x">✕</span> Budget approval</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FORM -->
+<section class="form-section">
+<div class="form-wrap">
+<p class="section-label" style="text-align:center;">Request a pilot</p>
+<h2>Ready to see it on your own members?</h2>
+<p class="form-lead">We'll follow up within one business day to confirm fit and walk through the data specification.</p>
+<div class="form-card">
+<div class="form-row form-row-2">
+<div class="form-row">
+<label>First name</label>
+<input placeholder="First" type="text"/>
+</div>
+<div class="form-row">
+<label>Last name</label>
+<input placeholder="Last" type="text"/>
+</div>
+</div>
+<div class="form-row">
+<label>Work email</label>
+<input placeholder="you@organization.org" type="email"/>
+</div>
+<div class="form-row">
+<label>Organization</label>
+<input placeholder="Health plan or care management organization" type="text"/>
+</div>
+<div class="form-row">
+<label>Your role</label>
+<select>
+<option disabled="" selected="" value="">Select your role</option>
+<option>Care Management Leadership</option>
+<option>Clinical Operations</option>
+<option>Population Health</option>
+<option>Quality / Compliance</option>
+<option>Strategy / Innovation</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-row">
+<label>Care management population size (approx.)</label>
+<select>
+<option disabled="" selected="" value="">Select a range</option>
+<option>Under 500</option>
+<option>500–2,000</option>
+<option>2,000–10,000</option>
+<option>Over 10,000</option>
+</select>
+</div>
+<div class="form-row">
+<label>Anything we should know? (optional)</label>
+<textarea placeholder="Current outreach challenges, specific populations of interest, timeline considerations…"></textarea>
+</div>
+<button class="form-submit" type="button">
+        Request pilot
+        <svg fill="none" height="13" viewbox="0 0 13 13" width="13"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
+</button>
+<p class="form-note">No cost. No commitment. We will follow up within one business day.</p>
+</div>
+<div class="form-confirmation" id="formConfirmation">
+<div class="confirm-icon">
+<svg fill="none" height="22" viewbox="0 0 22 22" width="22">
+<path d="M5 11l4.5 4.5 8-8" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="confirm-heading">Request received.</div>
+<p class="confirm-body">
+        We will follow up within <strong>one business day</strong> to confirm fit
+        and walk through the data specification. No action needed on your end.
+      </p>
+</div>
+</div>
+</section>
+<script>
+  document.querySelector('.form-submit').addEventListener('click', function() {
+    const card = document.querySelector('.form-card');
+    const confirmation = document.getElementById('formConfirmation');
+    card.style.transition = 'opacity 0.25s ease';
+    card.style.opacity = '0';
+    setTimeout(function() {
+      card.style.display = 'none';
+      confirmation.classList.add('visible');
+    }, 250);
+  });
+</script>
+<!-- DELIVERABLES -->
+<section class="deliverables-section" style="padding-top: 4rem;">
+<div class="container">
+<p class="section-label">Pilot deliverables</p>
+<h2>What lands on your desk at the end of three weeks.</h2>
+<div class="deliverables-grid">
+<div class="deliverable-card">
+<div class="deliverable-num">01</div>
+<h3>Member Briefs</h3>
+<p>A full Outreach Intelligence Brief for every member in the cohort. Ready to use in care management workflow immediately — no additional processing required.</p>
+</div>
+<div class="deliverable-card">
+<div class="deliverable-num">02</div>
+<h3>Cohort Engagement Report</h3>
+<p>Posture distribution across the cohort, channel misalignment analysis, and a quantified estimate of outreach capacity currently lost to avoidable non-response.</p>
+</div>
+<div class="deliverable-card">
+<div class="deliverable-num">03</div>
+<h3>Alignment Gap Analysis</h3>
+<p>A side-by-side view of current outreach patterns against posture-aligned guidance — showing where the highest-leverage adjustments are and what the expected impact would be.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FOUNDING PARTNER -->
+<section class="founding-section">
+<div class="container">
+<p class="section-label">Founding pilot partners</p>
+<h2>Be among the first.</h2>
+<p class="founding-lead">
+      Mnomis is actively seeking its founding pilot cohort.
+      <strong>Being first carries advantages that later adopters will not have.</strong>
+      We are a small team working directly with each pilot partner —
+      not a platform with a queue.
+    </p>
+<div class="founding-grid">
+<div class="founding-cell">
+<div class="founding-cell-icon">
+<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M8 2v12M2 8h12" stroke="#5a9e52" stroke-linecap="round" stroke-width="1.4"></path></svg>
+</div>
+<h3>Direct methodology access</h3>
+<p>Founding partners work directly with the team that built the framework — not an implementation layer. <strong>Questions get answered at the source.</strong></p>
+</div>
+<div class="founding-cell">
+<div class="founding-cell-icon">
+<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8l4 4 6-6" stroke="#5a9e52" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
+</div>
+<h3>Shape the brief format</h3>
+<p>The Outreach Intelligence Brief will evolve. <strong>Founding partners' feedback directly influences</strong> how guidance is structured, surfaced, and integrated into care management workflow.</p>
+</div>
+<div class="founding-cell">
+<div class="founding-cell-icon">
+<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" r="5.5" stroke="#5a9e52" stroke-width="1.4"></circle><path d="M8 5v3.5l2 2" stroke="#5a9e52" stroke-linecap="round" stroke-width="1.4"></path></svg>
+</div>
+<h3>Priority access at scale</h3>
+<p>Organizations that complete a founding pilot establish the relationship and the data foundation for <strong>full deployment at preferred terms</strong> when they are ready to move.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<div class="container" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center;">
+  <div>
+    <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
+    <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
+    <a href="mailto:hello@mnomis.com" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;">hello@mnomis.com</a>
+  </div>
+  <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+    <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
+    <a href="/about/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Why Mnomis</a>
+    <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Our Framework</a>
+    <a href="/brief-example/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Sample Brief</a>
+    <a href="/pilot/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Pilot</a>
+  </nav>
+</div>
+</footer>
+<script src="/js/nav-active.js" defer></script>
+</body>
+</html>
