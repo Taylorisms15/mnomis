@@ -180,3 +180,28 @@ section{
 
 
 .hero{ padding-top: 80px; }
+
+
+/* ───────────────── HEADER RIGHT ───────────────── */
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+}
+
+.header-email{
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #6b7280;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header-email:hover{ color:#111827; }
+
+@media (max-width: 820px){
+  .header-email{ display:none; }
+}
