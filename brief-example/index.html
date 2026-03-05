@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="/css/styles.css"><meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Outreach Intelligence Brief — Mnomis</title>
+<title>Outreach Intelligence Brief - Mnomis</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
@@ -564,17 +564,21 @@ body {
 <!-- BUILD: fullfix-v6 -->
 <!-- BUILD: fullfix-v7 -->
 <!-- BUILD: fullfix-v8 -->
-<header class="site-header" data-build="fullfix-v8">
+<header class="site-header">
   <div class="header-inner">
     <a class="logo" href="/">
       <img src="/assets/mnomis-logo.png" alt="Mnomis">
     </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav class="main-nav">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/framework/" class="nav-link">Our Framework</a>
-      <a href="/brief-example/" class="nav-link">Sample Brief</a>
-      <a href="/pilot/" class="nav-link">Pilot</a>
+      <a href="/framework/" class="nav-link">Framework</a>
       <a href="/about/" class="nav-link">Why Mnomis</a>
+      <a href="/brief-example/" class="nav-link active">Sample Brief</a>
+      <a href="/pilot/" class="nav-link">Pilot</a>
     </nav>
   </div>
 </header>
@@ -583,12 +587,7 @@ body {
 <div class="breadcrumb">
 <a href="/">Mnomis</a>
 <span>›</span>
-<span>Outreach Intelligence Brief — Example</span>
-</div>
-<div class="vision-banner" style="background:var(--navy,#0f2341);border-left:4px solid var(--green,#5a9e52);padding:1.25rem 1.5rem;margin-bottom:1.5rem;border-radius:2px;">
-  <p style="font-family:var(--mono,monospace);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-lt,#8ec986);margin:0 0 0.5rem;">As we scale with you</p>
-  <p style="font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65;margin:0 0 0.5rem;">The Outreach Intelligence Brief is the current delivery format — readable, workflow-ready, and requiring no new tools. As Mnomis scales, this guidance will be delivered directly within the EHR and care management platforms your teams already use.</p>
-  <p style="font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65;margin:0;font-weight:500;">The goal is not adoption of a new system. It is better intelligence inside the systems you already have.</p>
+<span>Outreach Intelligence Brief - Example</span>
 </div>
 <div class="brief">
 <!-- BRIEF HEADER -->
@@ -623,7 +622,7 @@ body {
 </div>
 <!-- AT A GLANCE -->
 <div class="glance-strip">
-<div class="glance-label">At a glance — 30-second read</div>
+<div class="glance-label">At a glance - 30-second read</div>
 <div class="glance-grid">
 <div class="glance-cell">
 <div class="glance-cell-label">Primary channel</div>
@@ -643,7 +642,7 @@ body {
 </div>
 </div>
 <div class="glance-next">
-<strong>Next action:</strong> Send a single SMS this Tuesday with one specific ask and a clear, immediate benefit — do not call, do not ask open-ended questions.
+<strong>Next action:</strong> Send a single SMS this Tuesday with one specific ask and a clear, immediate benefit - do not call, do not ask open-ended questions.
       </div>
 </div>
 <!-- BRIEF BODY -->
@@ -657,7 +656,7 @@ body {
 <div class="signal-cell">
 <div class="signal-name">Outreach response</div>
 <div class="signal-value amber">31%</div>
-<div class="signal-note">Selective — responds to structured asks, ignores open-ended contact</div>
+<div class="signal-note">Selective - responds to structured asks, ignores open-ended contact</div>
 </div>
 <div class="signal-cell">
 <div class="signal-name">Appt. adherence</div>
@@ -667,7 +666,7 @@ body {
 <div class="signal-cell">
 <div class="signal-name">Care gap navigation</div>
 <div class="signal-value">2 / 3</div>
-<div class="signal-note">Two of three gaps closed — both following single-action outreach</div>
+<div class="signal-note">Two of three gaps closed - both following single-action outreach</div>
 </div>
 <div class="signal-cell">
 <div class="signal-name">Channel behavior</div>
@@ -677,7 +676,7 @@ body {
 <div class="signal-cell">
 <div class="signal-name">Escalation history</div>
 <div class="signal-value">0</div>
-<div class="signal-note">No prior escalation events — conditional engagement maintained</div>
+<div class="signal-note">No prior escalation events - conditional engagement maintained</div>
 </div>
 <div class="signal-cell">
 <div class="signal-name">Pattern stability</div>
@@ -691,7 +690,7 @@ body {
 <div class="section-heading">Engagement Interpretation</div>
 <p class="interp-para">
             A 31% outreach response rate does not indicate disengagement for this member.
-            It indicates a <strong>conditional engagement pattern</strong> — one where response
+            It indicates a <strong>conditional engagement pattern</strong> - one where response
             is tied to message structure and specificity rather than frequency or relationship.
             The member has demonstrated willingness to act when the ask is concrete and the
             benefit is immediate.
@@ -712,7 +711,7 @@ body {
           </p>
 <p class="interp-para">
             The hardening trend warrants attention but not alarm. This member has not
-            disengaged — they are still responding. The priority is to <strong>arrest
+            disengaged - they are still responding. The priority is to <strong>arrest
             the hardening before it reaches Disengaged / Avoidant</strong>, which means
             removing friction from every interaction and eliminating open-ended contact entirely.
           </p>
@@ -723,9 +722,9 @@ body {
 <div class="guidance-grid">
 <div class="guidance-card">
 <div class="guidance-card-label">Channel</div>
-<h4>SMS only — do not call</h4>
+<h4>SMS only - do not call</h4>
 <p>This member has a zero response rate to phone contact over 18 months.
-              <strong>Calling this member is not neutral — it is actively counterproductive.</strong>
+              <strong>Calling this member is not neutral - it is actively counterproductive.</strong>
               Every unanswered call increases the cost of re-engagement.</p>
 </div>
 <div class="guidance-card">
@@ -751,7 +750,7 @@ body {
 <h4>Tuesday–Thursday, minimum 7 days between attempts</h4>
 <p>Response data shows a clear mid-week concentration.
               <strong>Do not send Monday or Friday.</strong>
-              Allow at least 7 days between outreach attempts — this member
+              Allow at least 7 days between outreach attempts - this member
               does not respond faster with higher frequency; they disengage.</p>
 </div>
 <div class="guidance-card">
@@ -770,7 +769,7 @@ body {
 <ul class="steps-list">
 <li>
 <span class="step-num">1</span>
-<div><strong>Draft one structured SMS</strong> for the open care gap using the single-ask format above. Route for review before sending — message construction is the highest-leverage variable for this member.</div>
+<div><strong>Draft one structured SMS</strong> for the open care gap using the single-ask format above. Route for review before sending - message construction is the highest-leverage variable for this member.</div>
 </li>
 <li>
 <span class="step-num">2</span>
@@ -790,10 +789,10 @@ body {
 <div class="brief-section">
 <div class="section-heading">What to Avoid</div>
 <ul class="avoid-list">
-<li><span class="avoid-x">✕</span><div><strong>Phone calls.</strong> Not answered, not neutral — actively counterproductive for this member.</div></li>
+<li><span class="avoid-x">✕</span><div><strong>Phone calls.</strong> Not answered, not neutral - actively counterproductive for this member.</div></li>
 <li><span class="avoid-x">✕</span><div><strong>Multi-step messages.</strong> Any message requiring more than one action will not be completed.</div></li>
 <li><span class="avoid-x">✕</span><div><strong>Open-ended questions.</strong> "How are you feeling?" and "Is there anything we can help with?" will not receive responses.</div></li>
-<li><span class="avoid-x">✕</span><div><strong>Frequency escalation.</strong> Sending more messages does not increase response rate for Conditional Actors — it accelerates disengagement.</div></li>
+<li><span class="avoid-x">✕</span><div><strong>Frequency escalation.</strong> Sending more messages does not increase response rate for Conditional Actors - it accelerates disengagement.</div></li>
 <li><span class="avoid-x">✕</span><div><strong>Portal prompts.</strong> No portal engagement in 18 months. Do not route this member to self-service tools.</div></li>
 </ul>
 </div>
@@ -905,23 +904,23 @@ body {
 <div class="illustrative-notice">
     Illustrative example  ·  All member data is fictional and for demonstration purposes only
   </div>
+
+<div class="vision-banner" style="background:var(--navy,#0f2341);border-left:4px solid var(--green,#5a9e52);padding:1.25rem 1.5rem;margin-top:2rem;border-radius:2px;">
+  <p style="font-family:var(--mono,monospace);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-lt,#8ec986);margin:0 0 0.5rem;">As we scale with you</p>
+  <p style="font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65;margin:0 0 0.5rem;">The Outreach Intelligence Brief is the current delivery format - readable, workflow-ready, and requiring no new tools. As Mnomis scales, this guidance will be delivered directly within the EHR and care management platforms your teams already use.</p>
+  <p style="font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65;margin:0;font-weight:500;">The goal is not adoption of a new system. It is better intelligence inside the systems you already have.</p>
+</div>
 </div><!-- /page -->
 <footer>
 <div class="container" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center;">
   <div>
     <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
     <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
-    <a href="mailto:hello@mnomis.com" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;">hello@mnomis.com</a>
+    <a href="/cdn-cgi/l/email-protection#1c74797070735c71727371756f327f7371" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;"><span class="__cf_email__" data-cfemail="b2dad7dededdf2dfdcdddfdbc19cd1dddf">[email&#160;protected]</span></a>
   </div>
   <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
     <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
     <a href="/about/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Why Mnomis</a>
-    <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Our Framework</a>
+    <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Framework</a>
     <a href="/brief-example/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Sample Brief</a>
-    <a href="/pilot/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Pilot</a>
-  </nav>
-</div>
-</footer>
-<script src="/js/nav-active.js" defer></script>
-</body>
-</html>
+    <a href="/pilot/" style="font-size:0.875rem;color:rgba(255,255,25
