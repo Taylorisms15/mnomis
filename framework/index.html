@@ -219,6 +219,56 @@
   .marker-old { color: var(--muted); }
   .marker-new { color: var(--green); }
 
+  /* ── INTERPRETIVE MODEL ── */
+  .interp-model {
+    margin-top: 2.5rem;
+    border: 1px solid var(--rule);
+  }
+  .interp-model-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--fog);
+  }
+  .interp-model-cells {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background: var(--rule);
+  }
+  .interp-cell {
+    background: var(--white);
+    padding: 1.5rem;
+    margin-right: 1px;
+  }
+  .interp-cell:last-child { margin-right: 0; }
+  .interp-cell--active {
+    background: var(--fog);
+    border-top: 3px solid var(--green);
+  }
+  .interp-cell-name {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .interp-cell--active .interp-cell-name { color: var(--green); }
+  .interp-cell-desc {
+    font-size: 0.825rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  @media (max-width: 640px) {
+    .interp-model-cells { grid-template-columns: 1fr; }
+    .interp-cell { margin-right: 0; margin-bottom: 1px; }
+  }
+
   /* ── SIGNALS ── */
   .signals-section {
     background: var(--fog);
@@ -739,21 +789,17 @@
 <!-- BUILD: fullfix-v6 -->
 <!-- BUILD: fullfix-v7 -->
 <!-- BUILD: fullfix-v8 -->
-<header class="site-header">
+<header class="site-header" data-build="fullfix-v8">
   <div class="header-inner">
     <a class="logo" href="/">
       <img src="/assets/mnomis-logo.png" alt="Mnomis">
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.nextElementSibling.classList.toggle('open')">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
     <nav class="main-nav">
-      <a href="/framework/" class="nav-link active">Framework</a>
-      <a href="/about/" class="nav-link">Why Mnomis</a>
+      <a href="/" class="nav-link">Home</a>
+      <a href="/framework/" class="nav-link">Our Framework</a>
       <a href="/brief-example/" class="nav-link">Sample Brief</a>
       <a href="/pilot/" class="nav-link">Pilot</a>
+      <a href="/about/" class="nav-link">Why Mnomis</a>
     </nav>
   </div>
 </header>
@@ -804,10 +850,16 @@
           signals that are already in your systems.
         </p>
 <p>
-          The Motivational Intelligence Framework was built to make that layer 
+          The Motivational Intelligence Framework™ was built to make that layer 
           accessible to care management teams - without new surveys, without 
           clinical inference, and without the complexity that makes behavioral 
           tools impractical at the point of care.
+        </p>
+<p>
+          <strong>The Motivational Intelligence Framework™ operates as a system of interpretive intelligence.</strong> 
+          It does not predict behavior. It interprets engagement signals to reveal 
+          the motivational context in which outreach is received - strengthening 
+          care manager judgment rather than replacing it.
         </p>
 </div>
 <div>
@@ -837,10 +889,28 @@
 <p style="font-size:0.85rem; color:rgba(255,255,255,0.65); line-height:1.65;">
 <strong style="color:#fff;">Both are necessary.</strong> Risk stratification without engagement intelligence 
                 produces outreach that is clinically prioritized but behaviorally misaligned. 
-                The MIF does not replace risk stratification - it answers the question risk cannot.
+                The Motivational Intelligence Framework™ does not replace risk stratification - it answers the question risk cannot.
               </p>
 </div>
 </div>
+</div>
+</div>
+</div>
+<!-- THREE-ELEMENT MODEL -->
+<div class="interp-model">
+<div class="interp-model-label">The interpretive model</div>
+<div class="interp-model-cells">
+<div class="interp-cell">
+<div class="interp-cell-name">Orientation</div>
+<div class="interp-cell-desc">Stable motivational anchors that shape how an individual interprets requests for action.</div>
+</div>
+<div class="interp-cell interp-cell--active">
+<div class="interp-cell-name">Motivational Posture</div>
+<div class="interp-cell-desc">The motivational stance currently shaping engagement behavior - derived from behavioral signals over time.</div>
+</div>
+<div class="interp-cell">
+<div class="interp-cell-name">Activation</div>
+<div class="interp-cell-desc">Observable readiness reflected through engagement actions such as responding to outreach or scheduling care.</div>
 </div>
 </div>
 </div>
@@ -919,7 +989,7 @@
 <p class="section-label">The four postures</p>
 <h2>Every member falls somewhere<br/>on this spectrum.</h2>
 <p>
-        The MIF classifies members into one of four motivational postures. 
+        The Motivational Intelligence Framework™ classifies members into one of four motivational postures. 
         These are not personality types and they are not permanent - 
         they describe a member's current orientation toward their own care, 
         as expressed through their behavioral history. Postures can shift, 
@@ -1007,7 +1077,7 @@
             and how the guidance was derived from them.</strong>
 </p>
 <p>
-            The MIF does not claim to replace clinical judgment. It claims to give 
+            The Motivational Intelligence Framework™ does not claim to replace clinical judgment. It claims to give 
             care managers one additional layer of interpretable insight - the behavioral 
             orientation of the member in front of them - so that judgment can be applied 
             more precisely.
@@ -1048,7 +1118,7 @@
 <p class="section-label">See it applied</p>
 <h2>The framework in action<br/>on your own members.</h2>
 <p>
-      The pilot applies the MIF to a cohort from your care management population 
+      The pilot applies the Motivational Intelligence Framework™ to a cohort from your care management population 
       and returns a full brief for every member - at no cost, with no integration required.
     </p>
 <div class="cta-buttons">
