@@ -775,7 +775,7 @@
 <label>Anything we should know? (optional)</label>
 <textarea placeholder="Current outreach challenges, specific populations of interest, timeline considerations…"></textarea>
 </div>
-<button class="form-submit" type="button">
+<button class="form-submit" type="button" id="formSubmitBtn">
         Request pilot
         <svg fill="none" height="13" viewbox="0 0 13 13" width="13"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
 </button>
@@ -796,15 +796,47 @@
 </div>
 </section>
 <script>
-  document.querySelector('.form-submit').addEventListener('click', function() {
+  document.getElementById('formSubmitBtn').addEventListener('click', async function() {
+    const btn = this;
     const card = document.querySelector('.form-card');
     const confirmation = document.getElementById('formConfirmation');
-    card.style.transition = 'opacity 0.25s ease';
-    card.style.opacity = '0';
-    setTimeout(function() {
-      card.style.display = 'none';
-      confirmation.classList.add('visible');
-    }, 250);
+
+    const inputs = card.querySelectorAll('input, select, textarea');
+    const labels = card.querySelectorAll('label');
+
+    const formData = { access_key: 'd2fcfe65-4ec0-4b98-8333-02e13be5034f', subject: 'Mnomis Pilot Request' };
+    inputs.forEach(function(input, i) {
+      const label = labels[i] ? labels[i].textContent.trim() : 'Field ' + i;
+      formData[label] = input.value;
+    });
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      if (data.success) {
+        card.style.transition = 'opacity 0.25s ease';
+        card.style.opacity = '0';
+        setTimeout(function() {
+          card.style.display = 'none';
+          confirmation.classList.add('visible');
+        }, 250);
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Request pilot <svg fill="none" height="13" viewBox="0 0 13 13" width="13"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>';
+        alert('Something went wrong. Please try again or email hello@mnomis.com directly.');
+      }
+    } catch(e) {
+      btn.disabled = false;
+      btn.innerHTML = 'Request pilot <svg fill="none" height="13" viewBox="0 0 13 13" width="13"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>';
+      alert('Something went wrong. Please try again or email hello@mnomis.com directly.');
+    }
   });
 </script>
 <!-- FOOTER -->
@@ -813,7 +845,7 @@
   <div>
     <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
     <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
-    <a href="/cdn-cgi/l/email-protection#e68e838a8a89a68b88898b8f95c885898b" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;"><span class="__cf_email__" data-cfemail="86eee3eaeae9c6ebe8e9ebeff5a8e5e9eb">[email&#160;protected]</span></a>
+    <!--email_off--><a href="mailto:hello@mnomis.com" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;">hello@mnomis.com</a><!--/email_off-->
   </div>
   <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
     <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
