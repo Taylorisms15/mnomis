@@ -4,502 +4,509 @@
 
 <link rel="stylesheet" href="/css/styles.css"><meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Pilot Program - Mnomis</title>
+<title>Mnomis Outreach Intelligence for Care Management</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
 <style>
 :root {
-    --navy:      #0f2341;
-    --navy-mid:  #1a3459;
-    --green:     #3d7a36;
-    --green-lt:  #5a9e52;
-    --slate:     #3d4f63;
-    --fog:       #f2f4f7;
-    --fog-dark:  #e6eaef;
-    --white:     #ffffff;
-    --text:      #1e2d3d;
-    --muted:     #5a6a7a;
-    --rule:      #d0d8e4;
-    --serif:     "Libre Baskerville", Georgia, serif;
-    --sans:      "DM Sans", system-ui, sans-serif;
-    --mono:      "DM Mono", monospace;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--sans);
-    color: var(--text);
-    background: var(--white);
-    font-size: 15px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
+ --navy: #0f2341;
+ --navy-mid: #1a3459;
+ --green: #3d7a36;
+ --green-lt: #5a9e52;
+ --slate: #3d4f63;
+ --fog: #f2f4f7;
+ --white: #ffffff;
+ --text: #1e2d3d;
+ --muted: #5a6a7a;
+ --rule: #d0d8e4;
+ --serif: 'Libre Baskerville', Georgia, serif;
+ --sans: 'DM Sans', system-ui, sans-serif;
+ }
+
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+ html { scroll-behavior: smooth; }
+
+ body {
+ font-family: var(--sans);
+ color: var(--text);
+ background: var(--white);
+ font-size: 16px;
+ line-height: 1.65;
+ -webkit-font-smoothing: antialiased;
+ }
+
+ /* ── HEADER ── */
+/* ── HERO ── */
+ .hero {
+ background: var(--navy) url('data:image/png;base64,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') right center / cover no-repeat;
+ color: #fff;
+ padding: 6rem 2rem 5rem;
+ position: relative;
+ overflow: hidden;
+ }
+
+ 
+
+ .hero-inner {
+ max-width: 1080px;
+ margin: 0 auto;
+ position: relative;
+ }
+
+ .hero-eyebrow {
+ font-family: var(--sans);
+ font-size: 12px;
+ font-weight: 500;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--green-lt);
+ margin-bottom: 1.5rem;
+ }
+
+ .hero h1 {
+ font-family: var(--serif);
+ font-size: clamp(2.4rem, 5vw, 3.4rem);
+ font-weight: 700;
+ line-height: 1.18;
+ letter-spacing: -0.01em;
+ margin-bottom: 1.75rem;
+ color: #fff;
+ }
+
+ .hero h1 em {
+ font-style: italic;
+ color: rgba(255,255,255,0.7);
+ }
+
+ .hero-lead {
+ font-size: 1.1rem;
+ font-weight: 300;
+ line-height: 1.75;
+ color: rgba(255,255,255,0.75);
+ margin-bottom: 2.5rem;
+ }
+
+ .hero-subline {
+ font-family: var(--serif);
+ font-size: 1.15rem;
+ font-style: italic;
+ color: rgba(255,255,255,0.9);
+ margin-bottom: 1.5rem;
+ margin-top: -0.5rem;
+ }
+
+ .hero-cta {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.5rem;
+ background: var(--green);
+ color: #fff;
+ font-family: var(--sans);
+ font-size: 14px;
+ font-weight: 500;
+ letter-spacing: 0.04em;
+ text-decoration: none;
+ padding: 0.8rem 1.6rem;
+ border-radius: 3px;
+ transition: background 0.2s;
+ }
+
+ .hero-cta:hover { background: var(--green-lt); }
+
+ .hero-cta svg { flex-shrink: 0; }
+
+ /* ── DIVIDER ── */
+ .section-divider {
+ height: 1px;
+ background: var(--rule);
+ max-width: 1080px;
+ margin: 0 auto;
+ }
+
+ /* ── SECTIONS ── */
+ section { padding: 4.5rem 2rem; }
+
+ .container {
+ max-width: 1080px;
+ margin: 0 auto;
+ }
+
+ /* ── PROBLEM STRIP ── */
+ .problem-strip {
+ background: var(--fog);
+ padding: 3rem 2rem;
+ border-top: 3px solid var(--navy);
+ }
+
+ .problem-strip p {
+ max-width: 720px;
+ margin: 0 auto;
+ font-family: var(--serif);
+ font-size: 1.2rem;
+ line-height: 1.7;
+ color: var(--text);
+ }
+
+ .problem-strip strong { color: var(--navy); }
+
+ /* ── SECTION HEADERS ── */
+ .section-label {
+ font-family: var(--sans);
+ font-size: 11px;
+ font-weight: 500;
+ letter-spacing: 0.14em;
+ text-transform: uppercase;
+ color: var(--green);
+ margin-bottom: 0.6rem;
+ }
+
+ h2 {
+ font-family: var(--serif);
+ font-size: clamp(1.5rem, 3vw, 2rem);
+ font-weight: 700;
+ line-height: 1.25;
+ color: var(--navy);
+ margin-bottom: 1.25rem;
+ }
+
+ h3 {
+ font-family: var(--sans);
+ font-size: 0.95rem;
+ font-weight: 500;
+ letter-spacing: 0.02em;
+ color: var(--navy);
+ margin-bottom: 0.5rem;
+ }
+
+ p { color: var(--slate); }
+
+ /* ── OPERATING MODEL ── */
+ .model-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 0;
+ border: 1px solid var(--rule);
+ margin-top: 2.5rem;
+ }
+
+ .model-cell {
+ padding: 2rem 1.75rem;
+ border-right: 1px solid var(--rule);
+ position: relative;
+ }
+
+ .model-cell:last-child { border-right: none; }
+
+ .model-number {
+ font-family: var(--serif);
+ font-size: 2.5rem;
+ font-weight: 700;
+ color: var(--rule);
+ line-height: 1;
+ margin-bottom: 0.75rem;
+ }
+
+ .model-cell h3 {
+ font-size: 1rem;
+ font-weight: 500;
+ margin-bottom: 0.6rem;
+ }
+
+ .model-cell p {
+ font-size: 0.9rem;
+ line-height: 1.65;
+ }
+
+ .model-arrow {
+ position: absolute;
+ right: -12px;
+ top: 50%;
+ transform: translateY(-50%);
+ width: 22px;
+ height: 22px;
+ background: var(--white);
+ border: 1px solid var(--rule);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ z-index: 1;
+ color: var(--green);
+ }
+
+ .model-cell:last-child .model-arrow { display: none; }
+
+ /* ── WHY SECTION ── */
+ .why-split {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 4rem;
+ align-items: center;
+ }
+
+ .stat-block {
+    padding: 2.5rem;
+    background: var(--navy);
+    color: #fff;
   }
 
-  /* ── HEADER ── */
-/* ── HERO ── */
-  .hero {
-    background: var(--navy);
-    padding: 5rem 2rem 4.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 50% 90% at 80% 50%, rgba(61,122,54,0.13) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono);
+  .stat-eyebrow {
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--green-lt);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 4.5vw, 2.9rem);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.2;
-    margin-bottom: 1.25rem;
-  }
-  .hero h1 em { font-style: italic; color: rgba(255,255,255,0.65); }
-  .hero-lead {
-    font-size: 1rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.72);
-    line-height: 1.75;
-    margin-bottom: 2rem;
-  }
-  .hero-commitments {
+
+  .stat-dots {
     display: flex;
-    gap: 2rem;
+    gap: 10px;
     flex-wrap: wrap;
+    margin-bottom: 1.75rem;
   }
-  .commitment-pill {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.85);
-  }
-  .commitment-pill .check {
-    width: 18px; height: 18px;
+
+  .stat-dot {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    flex-shrink: 0;
+  }
+
+  .stat-dot--active {
     background: var(--green);
+    box-shadow: 0 0 12px rgba(90,158,82,0.5);
+  }
+
+  .stat-figure-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .commitment-pill .check svg { display: block; }
-
-  /* ── SECTIONS ── */
-  section { padding: 4rem 2rem; }
-  .container { max-width: 1080px; margin: 0 auto; }
-  .section-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 0.6rem;
-  }
-  h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.4rem, 3vw, 1.9rem);
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.25;
-    margin-bottom: 1rem;
-  }
-  h3 {
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 0.4rem;
-  }
-  p { color: var(--slate); }
-
-  /* ── HOW IT WORKS ── */
-  .how-section { background: var(--fog); }
-  .steps-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 2.5rem;
-    position: relative;
-  }
-  .steps-row::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: calc(12.5% + 16px);
-    right: calc(12.5% + 16px);
-    height: 1px;
-    background: var(--rule);
-    z-index: 0;
-  }
-  .step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 1rem;
-    position: relative;
-    z-index: 1;
-  }
-  .step-circle {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-bottom: 1.1rem;
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-  .step-circle.done { background: var(--green); }
-  .step h3 { text-align: center; margin-bottom: 0.5rem; }
-  .step p { font-size: 0.85rem; line-height: 1.6; }
-  .step-duration {
-    margin-top: 0.6rem;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* ── WHAT YOU GET / WHAT WE NEED ── */
-  .exchange-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin-top: 2.5rem;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-  }
-  .exchange-col {
-    background: var(--white);
-    padding: 2rem 2rem;
-  }
-  .exchange-col.need { background: var(--fog); }
-  .exchange-heading {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
-  }
-  .exchange-heading.get  { color: var(--green); }
-  .exchange-heading.need { color: var(--navy); }
-  .exchange-items { list-style: none; }
-  .exchange-items li {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--fog-dark);
-    font-size: 0.875rem;
-    line-height: 1.55;
-    color: var(--slate);
-  }
-  .exchange-items li:last-child { border-bottom: none; }
-  .exchange-icon {
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .exchange-items li strong { color: var(--text); font-weight: 500; }
-
-  /* ── WHAT WE DO NOT NEED ── */
-  .no-need-strip {
-    background: var(--navy);
-    padding: 2rem 2.5rem;
-    margin-top: 2px;
-  }
-  .no-need-strip .no-need-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 0.85rem;
-  }
-  .no-need-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .no-need-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 0.3rem 0.75rem;
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    font-family: var(--mono);
-    letter-spacing: 0.03em;
-    text-decoration: line-through;
-    text-decoration-color: rgba(255,255,255,0.25);
-  }
-  .no-need-tag .x { text-decoration: none; color: #ef4444; margin-right: 2px; }
-
-  /* ── DELIVERABLES ── */
-  .deliverables-section { background: var(--white); }
-  .deliverables-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
   }
-  .deliverable-card {
-    border: 1px solid var(--rule);
-    border-top: 3px solid var(--navy);
-    padding: 1.5rem;
-  }
-  .deliverable-num {
+
+  .stat-figure {
     font-family: var(--serif);
-    font-size: 2rem;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
     font-weight: 700;
-    color: var(--fog-dark);
-    line-height: 1;
-    margin-bottom: 0.6rem;
-  }
-  .deliverable-card h3 { margin-bottom: 0.5rem; }
-  .deliverable-card p { font-size: 0.875rem; line-height: 1.65; }
-
-  /* ── FORM SECTION ── */
-  .form-section {
-    background: var(--fog);
-    padding: 4rem 2rem;
-  }
-  .form-wrap {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .form-wrap h2 { text-align: center; margin-bottom: 0.5rem; }
-  .form-wrap .form-lead {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-bottom: 2rem;
-  }
-  .form-card {
-    background: var(--white);
-    border: 1px solid var(--rule);
-    padding: 2rem 2rem 2rem;
-  }
-  .form-row { margin-bottom: 1.1rem; }
-  .form-row label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-bottom: 0.4rem;
-    font-family: var(--mono);
-  }
-  .form-row input,
-  .form-row select,
-  .form-row textarea {
-    width: 100%;
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--text);
-    background: var(--white);
-    border: 1px solid var(--rule);
-    padding: 0.65rem 0.85rem;
-    outline: none;
-    border-radius: 2px;
-    transition: border-color 0.15s;
-    appearance: none;
-  }
-  .form-row input:focus,
-  .form-row select:focus,
-  .form-row textarea:focus {
-    border-color: var(--navy);
-  }
-  .form-row textarea { resize: vertical; min-height: 90px; }
-  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-submit {
-    width: 100%;
-    background: var(--navy);
-    color: #fff;
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    padding: 0.85rem;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: background 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  .form-submit:hover { background: var(--navy-mid); }
-  .form-note {
-    text-align: center;
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 1rem;
-    line-height: 1.6;
-    font-family: var(--mono);
+    color: var(--green-lt);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
   }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.45);
-    padding: 2rem 2rem;
-    font-size: 12px;
-    text-align: center;
-    line-height: 1.7;
-    font-family: var(--mono);
-  }
-  footer strong { color: rgba(255,255,255,0.8); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero-eyebrow     { animation: fadeUp 0.5s ease both; }
-  .hero h1          { animation: fadeUp 0.6s 0.1s ease both; }
-  .hero-lead        { animation: fadeUp 0.6s 0.2s ease both; }
-  .hero-commitments { animation: fadeUp 0.6s 0.3s ease both; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .steps-row { grid-template-columns: 1fr 1fr; }
-    .steps-row::before { display: none; }
-    .exchange-grid { grid-template-columns: 1fr; }
-    .deliverables-grid { grid-template-columns: 1fr; }
-    .form-row-2 { grid-template-columns: 1fr; }
-    .hero-commitments { gap: 1rem; }
-}
-  @media (max-width: 480px) {
-    .steps-row { grid-template-columns: 1fr; }
-    .no-need-items { flex-direction: column; }
-  }
-
-  /* ── FOUNDING PARTNER SECTION ── */
-  .founding-section {
-    background: var(--navy);
-    padding: 3.5rem 2rem;
-  }
-  .founding-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.08);
-    margin-top: 2rem;
-  }
-  .founding-cell {
-    background: rgba(255,255,255,0.04);
-    padding: 1.5rem 1.75rem;
-  }
-  .founding-cell-icon {
-    width: 32px; height: 32px;
-    border-radius: 2px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.85rem;
-  }
-  .founding-cell h3 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.4rem;
-  }
-  .founding-cell p {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.65;
-  }
-  .founding-cell p strong { color: rgba(255,255,255,0.85); font-weight: 500; }
-  .founding-section .section-label { color: var(--green-lt); }
-  .founding-section h2 { color: #fff; }
-  .founding-section .founding-lead {
+  .stat-figure-label {
     font-size: 0.95rem;
     color: rgba(255,255,255,0.65);
-    line-height: 1.75;
-    max-width: 580px;
-    margin-top: 0.5rem;
-  }
-  .founding-section .founding-lead strong { color: rgba(255,255,255,0.9); font-weight: 500; }
-  @media (max-width: 700px) {
-    .founding-grid { grid-template-columns: 1fr; }
+    line-height: 1.55;
   }
 
-  /* ── FORM CONFIRMATION ── */
-  .form-confirmation {
-    display: none;
-    text-align: center;
-    padding: 2.5rem 2rem;
-  }
-  .form-confirmation.visible { display: block; }
-  .confirm-icon {
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    background: var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-  }
-  .confirm-heading {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 0.6rem;
-  }
-  .confirm-body {
+  .stat-claim {
     font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.75;
-    max-width: 340px;
-    margin: 0 auto;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    margin: 0 0 1.25rem;
   }
-  .confirm-body strong { color: var(--text); font-weight: 500; }
 
-  @keyframes confirmFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .stat-source {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.25rem;
+    margin: 0;
+    font-style: italic;
   }
-  .form-confirmation.visible {
-    animation: confirmFadeIn 0.4s ease both;
-  }
+
+ .why-copy h2 { margin-bottom: 1rem; }
+ .why-copy p { margin-bottom: 1rem; }
+
+ /* ── DESIGNED FOR ── */
+ .audience-section { background: var(--fog); }
+
+ .audience-grid {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 1.5rem;
+ margin-top: 2.5rem;
+ }
+
+ .audience-card {
+ background: var(--white);
+ border: 1px solid var(--rule);
+ border-top: 3px solid var(--navy);
+ padding: 1.5rem;
+ }
+
+ .audience-card .role {
+ font-family: var(--sans);
+ font-size: 0.9rem;
+ font-weight: 500;
+ color: var(--navy);
+ margin-bottom: 0.4rem;
+ }
+
+ .audience-card .role-desc {
+ font-size: 0.85rem;
+ color: var(--muted);
+ line-height: 1.55;
+ }
+
+ /* ── FOOTER ── */
+ footer {
+ background: var(--navy);
+ color: rgba(255,255,255,0.5);
+ padding: 2.5rem 2rem;
+ font-size: 13px;
+ text-align: center;
+ line-height: 1.7;
+ }
+
+ footer strong {
+ color: rgba(255,255,255,0.85);
+ font-weight: 500;
+ }
+
+ /* ── ANIMATIONS ── */
+ @keyframes fadeUp {
+ from { opacity: 0; transform: translateY(18px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+ .hero h1 { animation: fadeUp 0.6s 0.1s ease both; }
+ .hero-lead { animation: fadeUp 0.6s 0.2s ease both; }
+ .hero-cta { animation: fadeUp 0.6s 0.3s ease both; }
+
+ /* ── RESPONSIVE ── */
+ @media (max-width: 768px) {
+ .model-grid { grid-template-columns: 1fr; }
+ .model-cell { border-right: none; border-bottom: 1px solid var(--rule); }
+ .model-cell:last-child { border-bottom: none; }
+ .model-arrow { display: none; }
+ .why-split { grid-template-columns: 1fr; gap: 2rem; }
+ .audience-grid { grid-template-columns: 1fr 1fr; }
+}
+
+ @media (max-width: 480px) {
+  .audience-grid { grid-template-columns: 1fr; }
+  .stat-figure-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .stat-figure { font-size: 4.5rem; }
+ }
+
+ /* ── EVIDENCE STRIP ── */
+ .evidence-strip {
+ background: var(--white);
+ padding: 4rem 2rem;
+ border-bottom: 1px solid var(--rule);
+ }
+ .evidence-intro {
+ max-width: 560px;
+ margin: 0 auto 2.5rem;
+ text-align: center;
+ }
+ .evidence-intro .section-label { text-align: center; }
+ .evidence-intro p {
+ font-size: 0.9rem;
+ color: var(--muted);
+ margin-top: 0.5rem;
+ line-height: 1.7;
+ }
+ .evidence-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 2px;
+ background: var(--rule);
+ border: 1px solid var(--rule);
+ max-width: 900px;
+ margin: 0 auto;
+ }
+ .evidence-cell {
+ background: var(--white);
+ padding: 2rem 1.75rem;
+ }
+ .evidence-stat {
+ font-family: var(--serif);
+ font-size: 2.6rem;
+ font-weight: 700;
+ color: var(--navy);
+ line-height: 1;
+ margin-bottom: 0.5rem;
+ }
+ .evidence-stat span { color: var(--green); }
+ .evidence-desc {
+ font-size: 0.875rem;
+ color: var(--slate);
+ line-height: 1.65;
+ margin-bottom: 0.75rem;
+ }
+ .evidence-source {
+ font-family: var(--mono);
+ font-size: 10px;
+ color: var(--muted);
+ letter-spacing: 0.06em;
+ border-top: 1px solid var(--fog-dark);
+ padding-top: 0.6rem;
+ }
+
+ /* ── FOUNDING PARTNER BANNER ── */
+ .founding-banner {
+ background: var(--navy);
+ padding: 2.5rem 2rem;
+ }
+ .founding-inner {
+ max-width: 760px;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: 1fr auto;
+ gap: 2rem;
+ align-items: center;
+ }
+ .founding-label {
+ font-family: var(--mono);
+ font-size: 10px;
+ font-weight: 600;
+ letter-spacing: 0.14em;
+ text-transform: uppercase;
+ color: var(--green-lt);
+ margin-bottom: 0.4rem;
+ }
+ .founding-text {
+ font-family: var(--serif);
+ font-size: 1.1rem;
+ font-weight: 700;
+ color: #fff;
+ line-height: 1.3;
+ margin-bottom: 0.4rem;
+ }
+ .founding-sub {
+ font-size: 0.875rem;
+ color: rgba(255,255,255,0.6);
+ line-height: 1.6;
+ }
+ .founding-sub strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+ .founding-cta {
+ flex-shrink: 0;
+ display: inline-flex;
+ align-items: center;
+ gap: 0.4rem;
+ background: var(--green);
+ color: #fff;
+ font-size: 13px;
+ font-weight: 500;
+ padding: 0.7rem 1.3rem;
+ border-radius: 2px;
+ text-decoration: none;
+ white-space: nowrap;
+ transition: background 0.2s;
+ }
+ .founding-cta:hover { background: var(--green-lt); }
+
+ @media (max-width: 700px) {
+ .evidence-grid { grid-template-columns: 1fr; }
+ .founding-inner { grid-template-columns: 1fr; }
+ }
 </style>
 </head>
 <body>
@@ -522,7 +529,7 @@
       <a href="/framework/" class="nav-link">Framework</a>
       <a href="/about/" class="nav-link">Why Mnomis</a>
       <a href="/brief-example/" class="nav-link">Sample Brief</a>
-      <a href="/pilot/" class="nav-link active">Pilot</a>
+      <a href="/pilot/" class="nav-link">Pilot</a>
     </nav>
   </div>
 </header>
@@ -530,320 +537,147 @@
 <!-- HERO -->
 <section class="hero">
 <div class="hero-inner">
-<p class="hero-eyebrow">Pilot Program</p>
-<h1>See it work<br/><em>on your own members.</em></h1>
+
+<p class="hero-eyebrow">Outreach intelligence for care management teams</p>
+<h1>Risk is visible.<br/><em>Readiness is not.</em></h1>
 <p class="hero-lead">
-      We classify motivational posture on a cohort from your existing data 
-      and return workflow-ready briefs - at no cost, with no system integration required.
-      Your data is de-identified before it leaves your organization. No PHI. No BAA. No compliance friction.
-    </p>
-<div class="hero-commitments">
-<div class="commitment-pill">
-<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-        No cost
-      </div>
-<div class="commitment-pill">
-<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-        No integration
-      </div>
-<div class="commitment-pill">
-<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-        No new tools to learn
-      </div>
-<div class="commitment-pill">
-<div class="check"><svg fill="none" height="9" viewbox="0 0 9 9" width="9"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-        Results in 3 weeks
-      </div>
-</div>
-</div>
-</section>
-<!-- HOW IT WORKS -->
-<section class="how-section">
-<div class="container">
-<p class="section-label">How the pilot works</p>
-<h2>Three steps. Three weeks.</h2>
-<div class="steps-row" style="grid-template-columns: repeat(3, 1fr);">
-<div class="step">
-<div class="step-circle">1</div>
-<h3>Send a cohort extract</h3>
-<p>You identify 50–200 members, de-identify the file on your side, and send it via secure encrypted transfer using our field spec. No PHI leaves your organization.</p>
-<div class="step-duration">Week 1</div>
-</div>
-<div class="step">
-<div class="step-circle">2</div>
-<h3>We classify and brief</h3>
-<p>We apply our research-grounded classification framework across your cohort and produce a full Outreach Intelligence Brief for each member. No black box. No machine learning. Interpretable guidance at every step.</p>
-<div class="step-duration">Weeks 2–3</div>
-</div>
-<div class="step">
-<div class="step-circle done">3</div>
-<h3>Review and debrief</h3>
-<p>We walk through findings with your care management team and map guidance to your current outreach patterns.</p>
-<div class="step-duration">Week 3</div>
-</div>
-</div>
-</div>
-</section>
-<!-- WHAT YOU GET / WHAT WE NEED -->
-<section style="padding: 4rem 2rem 0;">
-<div class="container">
-<p class="section-label">The exchange</p>
-<h2>What you provide. What you receive.</h2>
-<div class="exchange-grid">
-<div class="exchange-col need">
-<div class="exchange-heading need">What you provide</div>
-<ul class="exchange-items">
-<li>
-<span class="exchange-icon">
-<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><rect height="11" rx="1" stroke="#0f2341" stroke-width="1.2" width="10" x="2" y="1.5"></rect><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke="#0f2341" stroke-linecap="round" stroke-width="1.2"></path></svg>
-</span>
-<div><strong>A member cohort of 50–200</strong> from your active care management population. You define the selection criteria.</div>
-</li>
-<li>
-<span class="exchange-icon">
-<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M2 10.5L12 10.5M4.5 3.5v7M7 5.5v5M9.5 7.5v3" stroke="#0f2341" stroke-linecap="round" stroke-width="1.2"></path></svg>
-</span>
-<div><strong>A de-identified behavioral data extract</strong> covering outreach response history, appointment adherence, and care gap activity, keyed to an internal member ID you control. No PHI leaves your organization. We provide the field spec and accept encrypted file transfer.</div>
-</li>
-<li>
-<span class="exchange-icon">
-<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" r="5" stroke="#0f2341" stroke-width="1.2"></circle><path d="M7 4.5v2.75l1.75 1.75" stroke="#0f2341" stroke-linecap="round" stroke-width="1.2"></path></svg>
-</span>
-<div><strong>One debrief session</strong> (60 min) with care management leadership or clinical ops at the close of the pilot.</div>
-</li>
-</ul>
-</div>
-<div class="exchange-col">
-<div class="exchange-heading get">What you receive</div>
-<ul class="exchange-items">
-<li>
-<span class="exchange-icon">
-<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><rect height="11" rx="1" stroke="#3d7a36" stroke-width="1.2" width="10" x="2" y="1.5"></rect><path d="M4.5 5h5M4.5 7.5h5M4.5 10h3" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
-</span>
-<div><strong>One full Outreach Intelligence Brief per member</strong> - posture classification, behavioral interpretation, channel and tone guidance, next steps, and escalation threshold.</div>
-</li>
-<li>
-<span class="exchange-icon">
-<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M2 10.5L12 10.5M4.5 3.5v7M7 5.5v5M9.5 7.5v3" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
-</span>
-<div><strong>A cohort-level engagement summary</strong> - posture distribution, channel misalignment analysis, and estimated wasted outreach attempts across your current population.</div>
-</li>
-<li>
-<span class="exchange-icon">
-<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><circle cx="5" cy="5" r="3" stroke="#3d7a36" stroke-width="1.2"></circle><path d="M8 8l3.5 3.5" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
-</span>
-<div><strong>A pattern analysis</strong> identifying where current outreach strategy diverges from motivational posture - and what alignment would look like at scale.</div>
-</li>
-<li>
-<span class="exchange-icon">
-<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M7 2v10M2 7h10" stroke="#3d7a36" stroke-linecap="round" stroke-width="1.2"></path></svg>
-</span>
-<div><strong>A readout session</strong> with your team to walk through findings, answer questions, and discuss what a full deployment would involve.</div>
-</li>
-</ul>
-</div>
-</div>
-<!-- WHAT WE DO NOT NEED -->
-<div class="no-need-strip">
-<div class="no-need-label">What we do not need</div>
-<div class="no-need-items">
-<div class="no-need-tag"><span class="x">✕</span> System integration</div>
-<div class="no-need-tag"><span class="x">✕</span> API access</div>
-<div class="no-need-tag"><span class="x">✕</span> EHR credentials</div>
-<div class="no-need-tag"><span class="x">✕</span> Clinical notes</div>
-<div class="no-need-tag"><span class="x">✕</span> Claims data</div>
-<div class="no-need-tag"><span class="x">✕</span> PHI of any kind</div>
-<div class="no-need-tag"><span class="x">✕</span> Budget approval</div>
-</div>
-</div>
-</div>
-</section>
-<!-- DELIVERABLES -->
-<section class="deliverables-section" style="padding-top: 4rem;">
-<div class="container">
-<p class="section-label">Pilot deliverables</p>
-<h2>What lands on your desk at the end of three weeks.</h2>
-<div class="deliverables-grid">
-<div class="deliverable-card">
-<div class="deliverable-num">01</div>
-<h3>Member Briefs</h3>
-<p>A full Outreach Intelligence Brief for every member in the cohort. Ready to use in care management workflow immediately - no additional processing required.</p>
-</div>
-<div class="deliverable-card">
-<div class="deliverable-num">02</div>
-<h3>Cohort Engagement Report</h3>
-<p>Posture distribution across the cohort, channel misalignment analysis, and a quantified estimate of outreach capacity currently lost to avoidable non-response.</p>
-</div>
-<div class="deliverable-card">
-<div class="deliverable-num">03</div>
-<h3>Alignment Gap Analysis</h3>
-<p>A side-by-side view of current outreach patterns against posture-aligned guidance - showing where the highest-leverage adjustments are and what the expected impact would be.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- FOUNDING PARTNER -->
-<section class="founding-section">
-<div class="container">
-<p class="section-label">Founding pilot partners</p>
-<h2>Be among the first.</h2>
-<p class="founding-lead">
-      Mnomis is actively seeking its founding pilot cohort.
-      <strong>Being first carries advantages that later adopters will not have.</strong>
-      We are a small team working directly with each pilot partner -
-      not a platform with a queue.
-    </p>
-<div class="founding-grid">
-<div class="founding-cell">
-<div class="founding-cell-icon">
-<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M8 2v12M2 8h12" stroke="#5a9e52" stroke-linecap="round" stroke-width="1.4"></path></svg>
-</div>
-<h3>Direct methodology access</h3>
-<p>Founding partners work directly with the team that built the framework - not an implementation layer. <strong>Questions get answered at the source.</strong></p>
-</div>
-<div class="founding-cell">
-<div class="founding-cell-icon">
-<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8l4 4 6-6" stroke="#5a9e52" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
-</div>
-<h3>Shape the brief format</h3>
-<p>The Outreach Intelligence Brief will evolve. <strong>Founding partners' feedback directly influences</strong> how guidance is structured, surfaced, and integrated into care management workflow.</p>
-</div>
-<div class="founding-cell">
-<div class="founding-cell-icon">
-<svg fill="none" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" r="5.5" stroke="#5a9e52" stroke-width="1.4"></circle><path d="M8 5v3.5l2 2" stroke="#5a9e52" stroke-linecap="round" stroke-width="1.4"></path></svg>
-</div>
-<h3>Priority access at scale</h3>
-<p>Organizations that complete a founding pilot establish the relationship and the data foundation for <strong>full deployment at preferred terms</strong> when they are ready to move.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- FORM -->
-<section class="form-section">
-<div class="form-wrap">
-<p class="section-label" style="text-align:center;">Request a pilot</p>
-<h2>Ready to see it on your own members?</h2>
-<p class="form-lead">We'll follow up within one business day to confirm fit and walk through the data specification.</p>
-<div class="form-card">
-<div class="form-row form-row-2">
-<div class="form-row">
-<label>First name</label>
-<input placeholder="First" type="text"/>
-</div>
-<div class="form-row">
-<label>Last name</label>
-<input placeholder="Last" type="text"/>
-</div>
-</div>
-<div class="form-row">
-<label>Work email</label>
-<input placeholder="you@organization.org" type="email"/>
-</div>
-<div class="form-row">
-<label>Organization</label>
-<input placeholder="Health plan or care management organization" type="text"/>
-</div>
-<div class="form-row">
-<label>Your role</label>
-<select>
-<option disabled="" selected="" value="">Select your role</option>
-<option>Care Management Leadership</option>
-<option>Clinical Operations</option>
-<option>Population Health</option>
-<option>Quality / Compliance</option>
-<option>Strategy / Innovation</option>
-<option>Other</option>
-</select>
-</div>
-<div class="form-row">
-<label>Care management population size (approx.)</label>
-<select>
-<option disabled="" selected="" value="">Select a range</option>
-<option>Under 500</option>
-<option>500–2,000</option>
-<option>2,000–10,000</option>
-<option>Over 10,000</option>
-</select>
-</div>
-<div class="form-row">
-<label>Anything we should know? (optional)</label>
-<textarea placeholder="Current outreach challenges, specific populations of interest, timeline considerations…"></textarea>
-</div>
-<button class="form-submit" type="button" id="formSubmitBtn">
-        Request pilot
-        <svg fill="none" height="13" viewbox="0 0 13 13" width="13"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
-</button>
-<p class="form-note">No cost. No commitment. We will follow up within one business day.</p>
-</div>
-<div class="form-confirmation" id="formConfirmation">
-<div class="confirm-icon">
-<svg fill="none" height="22" viewbox="0 0 22 22" width="22">
-<path d="M5 11l4.5 4.5 8-8" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+ Your risk models are working. Your outreach isn't. Mnomis interprets 
+ the behavioral signals already in your data to show care managers how 
+ each member relates to their own care and what kind of outreach 
+ they'll actually respond to.
+ </p>
+<a class="hero-cta" href="/pilot/">
+ See How Our Pilot Offer Works
+ <svg fill="none" height="14" viewbox="0 0 14 14" width="14" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
 </svg>
+</a>
 </div>
-<div class="confirm-heading">Request received.</div>
-<p class="confirm-body">
-        We will follow up within <strong>one business day</strong> to confirm fit
-        and walk through the data specification. No action needed on your end.
-      </p>
+</section>
+<!-- PROBLEM STRIP -->
+<div class="problem-strip">
+<div class="container">
+<div style="max-width:780px;margin:0 auto;text-align:center;">
+  <div style="font-family:Georgia,serif;font-size:5rem;line-height:0.6;color:#5a9e52;opacity:0.5;margin-bottom:0.5rem;">&ldquo;</div>
+  <p style="font-family:var(--serif);font-size:1.55rem;line-height:1.6;color:var(--text);font-style:italic;margin:0 0 1.25rem;">Tailor support to the individual's level of activation.</p>
+  <p style="font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);opacity:0.5;margin:0;">Judith Hibbard &nbsp;&middot;&nbsp; Health Policy Research Group, University of Oregon</p>
+</div>
+</div>
+</div>
+<!-- OPERATING MODEL -->
+<section>
+<div class="container">
+<p class="section-label">How it works</p>
+<h2>From behavioral signal to embedded guidance</h2>
+<div class="model-grid">
+<div class="model-cell">
+<div class="model-number">01</div>
+<h3>The behavioral patterns are already in your data</h3>
+<p>Response behavior, care adherence patterns, and channel engagement history are signals already in your systems. Your outreach strategy is just not interpreting them.</p>
+<div class="model-arrow">
+<svg fill="none" height="10" viewbox="0 0 10 10" width="10"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+</div>
+<div class="model-cell">
+<div class="model-number">02</div>
+<h3>Patterns become posture</h3>
+<p>We read those signals across time to classify motivational posture: the durable orientation toward care that persists across interactions, and the situational shifts that occur under stress or at high-stakes moments.</p>
+<div class="model-arrow">
+<svg fill="none" height="10" viewbox="0 0 10 10" width="10"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+</div>
+<div class="model-cell">
+<div class="model-number">03</div>
+<h3>Posture becomes action</h3>
+<p>Channel, tone, timing, and escalation guidance lands directly in the workflow your team is already using. No translation step. No new tool.</p>
+<p style="margin-top:0.75rem;font-size:0.85rem;color:var(--muted);">The guidance is grounded in our deep experience developing messaging and experiences that move people across contexts and over time.</p>
+</div>
 </div>
 </div>
 </section>
-<script>
-  document.getElementById('formSubmitBtn').addEventListener('click', async function() {
-    const btn = this;
-    const card = document.querySelector('.form-card');
-    const confirmation = document.getElementById('formConfirmation');
+<div class="section-divider"></div>
+<!-- EMPATHY BRIDGE -->
+<div style="background:var(--fog);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:3rem 2rem;">
+<div class="container" style="max-width:720px;">
+<p style="font-family:var(--serif);font-size:1.2rem;line-height:1.75;color:var(--text);margin-bottom:0.75rem;">The most effective care management is already intuitive: reading behavioral cues, adjusting approach, knowing when to push and when to wait.</p>
+<p style="font-size:0.975rem;line-height:1.8;color:var(--slate);">The Motivational Intelligence Framework™ makes that practice consistent across every care manager, every member, every day.</p>
+</div>
+</div>
+<!-- WHY SECTION -->
+<section>
+<div class="container">
+<div class="why-split">
+<div class="stat-block">
+<p class="stat-eyebrow">The engagement gap</p>
 
-    const inputs = card.querySelectorAll('input, select, textarea');
-    const labels = card.querySelectorAll('label');
+<!-- 8 dots: 1 green, 7 dim -->
+<div class="stat-dots">
+ <div class="stat-dot stat-dot--active"></div>
+ <div class="stat-dot"></div>
+ <div class="stat-dot"></div>
+ <div class="stat-dot"></div>
+ <div class="stat-dot"></div>
+ <div class="stat-dot"></div>
+ <div class="stat-dot"></div>
+ <div class="stat-dot"></div>
+</div>
 
-    const formData = { access_key: 'd2fcfe65-4ec0-4b98-8333-02e13be5034f', subject: 'Mnomis Pilot Request' };
-    inputs.forEach(function(input, i) {
-      const label = labels[i] ? labels[i].textContent.trim() : 'Field ' + i;
-      formData[label] = input.value;
-    });
+<div class="stat-figure-row">
+ <div class="stat-figure">1 in 8</div>
+ <div class="stat-figure-label">members engage with standard care management outreach.</div>
+</div>
 
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      const data = await res.json();
-      if (data.success) {
-        card.style.transition = 'opacity 0.25s ease';
-        card.style.opacity = '0';
-        setTimeout(function() {
-          card.style.display = 'none';
-          confirmation.classList.add('visible');
-        }, 250);
-      } else {
-        btn.disabled = false;
-        btn.innerHTML = 'Request pilot <svg fill="none" height="13" viewBox="0 0 13 13" width="13"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>';
-        alert('Something went wrong. Please try again or email hello@mnomis.com directly.');
-      }
-    } catch(e) {
-      btn.disabled = false;
-      btn.innerHTML = 'Request pilot <svg fill="none" height="13" viewBox="0 0 13 13" width="13"><path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>';
-      alert('Something went wrong. Please try again or email hello@mnomis.com directly.');
-    }
-  });
-</script>
+<p class="stat-claim">The other seven are not unreachable. They are misread.</p>
+<p class="stat-source">Source: AHRQ, health plan disease management engagement rates</p>
+</div>
+<div class="why-copy">
+<p class="section-label">What we do differently</p>
+<h2>Classify motivational posture,<br/>not just clinical risk.</h2>
+<p>Risk tells you who is vulnerable. Posture tells you how they decide.</p>
+<p>Under stress, posture compresses. Readiness is how that compression expresses itself in the moment.</p>
+<p>Mnomis interprets structural posture and situational expression to determine how to engage at high-stakes decision points.</p>
+<p>Guidance is embedded directly into existing care workflows and systems.</p>
+</div>
+</div>
+</div>
+</section>
+<div class="section-divider"></div>
+<!-- DESIGNED FOR -->
+<section class="audience-section">
+<div class="container">
+<p class="section-label">Designed for</p>
+<h2>Built for the teams that run care management</h2>
+<div class="audience-grid">
+<div class="audience-card">
+<div class="role">Care Management Leadership</div>
+<div class="role-desc">Your team is making more calls and getting fewer responses. Mnomis shows you where effort is being wasted and how to redirect it toward members who are actually reachable.</div>
+</div>
+<div class="audience-card">
+<div class="role">Clinical Operations</div>
+<div class="role-desc">Risk scores tell you who to prioritize. They don't tell you how to reach them. Mnomis adds the behavioral layer that turns a risk list into an actionable outreach strategy.</div>
+</div>
+<div class="audience-card">
+<div class="role">Population Health Teams</div>
+<div class="role-desc">By the time disengagement shows up in utilization data, it's already expensive. Mnomis flags motivational patterns early before they become claims.</div>
+</div>
+<div class="audience-card">
+<div class="role">Compliance Review</div>
+<div class="role-desc">When outreach decisions need to be explained, "the risk score said so" isn't enough. Mnomis produces structured, interpretable guidance that documents the why behind every outreach decision.</div>
+</div>
+</div>
+</div>
+</section>
 <!-- FOOTER -->
 <footer>
 <div class="container" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center;">
-  <div>
-    <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
-    <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
-    <a href="mailto:hello@mnomis.com" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;">hello@mnomis.com</a>
-  </div>
-  <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-    <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
-    <a href="/about/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Why Mnomis</a>
-    <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Framework</a>
-    <a href="/brief-example/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Sample Brief</a>
-    <a href="/pilot/" style="font-size:0.875rem;color:rgba(255,255,25ze:0.875rem;color:rgba(255,255,25
+ <div>
+ <strong style="font-family:var(--serif);font-size:1rem;">Mnomis</strong>
+ <span style="margin:0 0.75rem;color:rgba(255,255,255,0.2);">·</span>
+ <a href="mailto:hello@mnomis.com" style="font-size:0.875rem;color:var(--green-lt);text-decoration:none;">hello@mnomis.com</a>
+ </div>
+ <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+ <a href="/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Home</a>
+ <a href="/about/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Why Mnomis</a>
+ <a href="/framework/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Our Framework</a>
+ <a href="/brief-example/" style="font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;">Sample Brief</a>
+ <a href="/pilot/
